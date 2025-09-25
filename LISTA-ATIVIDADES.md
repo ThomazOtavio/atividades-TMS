@@ -84,5 +84,7 @@
 | A11.1T  | Refatoração (1)                              | 33%            | Só fiz a primeira questao da atividade                                              | 23/09/2025 18:20 |
 | A11.1T  | Refatoração (1)                              | 0%             | nao consegui realizar                                                               | ---------------- |
 
+Link para os videos: https://ufubr-my.sharepoint.com/:f:/g/personal/thomaz_figueiredo_ufu_br/ErqeqeSYNoRHs5X7RfP8XqYBWEYkAgNqvaREouOwBXwwzQ?email=victor%40ufu.br&e=u2uX9v
+
   
 Atividades realizadas: **92,25%  -  Categoria: 4**
