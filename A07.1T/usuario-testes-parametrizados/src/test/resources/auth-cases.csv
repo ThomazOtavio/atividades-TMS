@@ -1,0 +1,5 @@
+algoritmo,senhaCorreta,tentativa,esperado
+SHA-256,segredo,segredo,true
+MD5,segredo,x,false
+SHA-1,abc,abc,true
+SHA-256,abc,xyz,false
