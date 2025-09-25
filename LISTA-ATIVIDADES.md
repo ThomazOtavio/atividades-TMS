@@ -2,9 +2,9 @@
 
 ---
 
-| Aula    | Atividade                                    |Porcetagem Feita| Comentarios                                                                         |   Data / Hora    | 		  
-|---------|----------------------------------------------|----------------|-------------------------------------------------------------------------------------|------------------|
-| A01.1T  | Outros casos notáveis...                     | 100%           | atividade realizada                           					| 24/09/2025 16:00 |https://github.com/ThomazOtavio/atividades-TMS/tree/main/A01.1T
+| Aula    | Atividade                                    |Porcetagem Feita| Comentarios                                                                         |   Data / Hora    | 		  Links                     |
+|---------|----------------------------------------------|----------------|-------------------------------------------------------------------------------------|------------------|--------------------------------|
+| A01.1T  | Outros casos notáveis...                     | 100%           | atividade realizada                           					| 24/09/2025 16:00 | [Link]  https://github.com/ThomazOtavio/atividades-TMS/tree/main/A01.1T
 | A01.1T  | Características e Aspectos                   | 100%           | atividade realizada   								| 24/09/2025 16:10 |
 | A01.1T  | Conceito de Qualidade de Software            | 100%           | atividade realizada   								| 24/09/2025 16:20 |
 | A01.1T  | Normas de Qualidade                          | 100%           | atividade realizada    								| 24/09/2025 16:30 |
