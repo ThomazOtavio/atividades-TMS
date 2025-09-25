@@ -1,0 +1,105 @@
+1. Identificação de Code Smells:
+
+
+a) Código Duplicado (Duplicate Code):
+Problema: O código de inserção de categorias e tarefas no banco de dados está duplicado, com lógicas semelhantes para inserção de dados e recuperação de IDs.
+
+Exemplo:
+
+String insertCategoria = "INSERT INTO categoria (nome, cor) VALUES (?, ?)";
+// Inserção no banco
+String insertTarefa = "INSERT INTO tarefa (fk_idUsuario, titulo, descricao, data, horaInicio, horaFim, horaAlarme, status, somNotificacao) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+b) Método Longo (Long Method):
+Problema: O método salvarTarefa() é longo, com muitas responsabilidades (inserção de dados, validação, manipulação de categorias e tarefas), o que prejudica a legibilidade e a manutenção.
+
+Exemplo:
+Ele contém lógica para validar e salvar a tarefa, incluir novas categorias, manipular a UI, etc. Isso torna o método difícil de testar e entender.
+
+c) Clásses Grandes (Large Class):
+Problema: A classe TarefaController está com muitas responsabilidades. Ela gerencia tanto a lógica da interface (UI) quanto a lógica do banco de dados.
+
+Exemplo:
+Ela contém métodos relacionados à manipulação de dados e exibição de alertas na UI.
+Pode-se separar a lógica de manipulação de tarefas e categorias em classes separadas.
+
+d) Inveja dos Dados (Feature Envy):
+Problema: A classe TarefaController acessa diretamente dados do modelo de tarefas (ex: TarefaModel), manipulando a lógica de dados de forma que deveria ser responsabilidade da própria classe TarefaModel.
+
+Exemplo:
+No método salvarTarefa, a classe TarefaController acessa os atributos de TarefaModel diretamente, o que poderia ser delegado ao próprio TarefaModel.
+
+2. Melhorias e remoção dos Code Smells:
+
+a) Extrair Métodos e Responsabilidades:
+Refatoração: O método salvarTarefa() pode ser dividido em métodos menores e mais específicos.
+Exemplo: Criar métodos para cada responsabilidade (ex: validarCampos(), salvarCategoria(), salvarTarefaNoBanco(), adicionarCategoriaTarefa()).
+Benefício: Isso melhora a legibilidade, facilita os testes unitários e promove o princípio de responsabilidade única.
+
+private boolean validarCampos(String titulo, String horaInicio, String data) {
+    return titulo != null && !titulo.isBlank()
+            && horaInicio != null && horaInicio.matches("\\d{2}:\\d{2}")
+            && data != null && !data.isBlank();
+}
+
+private void salvarCategoria(Connection conn, String novaCategoria, String corSelecionada) throws SQLException {
+    String insertCategoria = "INSERT INTO categoria (nome, cor) VALUES (?, ?)";
+    // lógica para salvar categoria
+}
+
+private void salvarTarefaNoBanco(Connection conn, String titulo, String descricao, String data, String horaInicio, String horaFim) throws SQLException {
+    String insertTarefa = "INSERT INTO tarefa (fk_idUsuario, titulo, descricao, data, horaInicio, horaFim, horaAlarme, status, somNotificacao) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    // lógica para salvar tarefa
+}
+
+b) Refatorar a Lógica de Inserção no Banco de Dados:
+Refatoração: Criar uma camada de acesso a dados separada para gerenciar as operações com o banco de dados. Isso separa a lógica de persistência da lógica de apresentação.
+Exemplo: Criar uma classe TarefaDAO para manipular as tarefas no banco de dados e uma classe CategoriaDAO para lidar com categorias.
+Benefício: Isso segue o princípio da separação de preocupações e torna o código mais modular.
+
+c) Substituir a Lógica Condicional por Polimorfismo (Switch Statement):
+Refatoração: O código que usa switch ou múltiplos if pode ser substituído por um padrão de design adequado, como Strategy ou State.
+Exemplo: A lógica de cálculo de preço, por exemplo, pode ser refatorada para usar polimorfismo em vez de um switch.
+Benefício: Facilita a manutenção e a expansão do código.
+
+interface TipoCategoria {
+    double calcularPreco(int dias);
+}
+
+class CategoriaNormal implements TipoCategoria {
+    public double calcularPreco(int dias) {
+        return dias * 2;
+    }
+}
+
+class CategoriaInfantil implements TipoCategoria {
+    public double calcularPreco(int dias) {
+        return dias * 1.5;
+    }
+}
+
+d) Melhorar a Legibilidade com Nomes Descritivos:
+Refatoração: Renomear métodos e variáveis para refletir mais claramente suas responsabilidades.
+
+Exemplo:
+salvarTarefa() poderia ser renomeado para salvarTarefaNoBanco().
+mostrarCamposNovaCategoria() poderia ser renomeado para exibirCamposNovaCategoria().
+
+e) Usar Uma Abordagem Orientada a Objetos no Modelo:
+Refatoração: Delegar responsabilidades de manipulação de dados para o próprio modelo TarefaModel e CategoriaModel.
+Exemplo: O modelo TarefaModel pode ter métodos como adicionarCategoria() ou salvar(), em vez de o TarefaController manipular diretamente os dados.
+
+3. Pesquisa de Code Smells em Projetos de Software Populares no Git:
+Aqui estão exemplos de Code Smells encontrados em dois projetos populares:
+
+Exemplo 1: Projeto Spring Framework
+Link: https://github.com/spring-projects/spring-framework
+Code Smell: Long Methods e Complex Conditional Logic.
+Trecho: No arquivo AbstractApplicationContext.java, existe um método chamado refresh() que é extremamente longo e contém lógica condicional complexa.
+Melhoria: Refatorar o método para dividir a lógica em métodos menores e usar padrões de design como o State para lidar com os diferentes estados de inicialização.
+
+Exemplo 2: Projeto Django
+https://github.com/django/django
+Code Smell: Large Classes.
+Trecho: A classe HttpRequest do Django possui muitas responsabilidades, incluindo manipulação de dados de entrada, cookies, parâmetros e cabeçalhos HTTP.
+Melhoria: Dividir a classe em sub-classes mais específicas para lidar com diferentes tipos de dados (por exemplo, HttpRequestCookies, HttpRequestHeaders).

@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ns0:project xmlns:ns0="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <ns0:modelVersion>4.0.0</ns0:modelVersion>
+
+  <ns0:groupId>com.manning.junitbook</ns0:groupId>
+  <ns0:artifactId>ch01-calculator-advanced</ns0:artifactId>
+  <ns0:version>1.0.0-SNAPSHOT</ns0:version>
+  <ns0:name>Calculator Advanced (JUnit 5)</ns0:name>
+  <ns0:description>Calculator with sqrt and pow, plus comprehensive JUnit tests</ns0:description>
+  <ns0:properties>
+    <ns0:project.build.sourceEncoding>UTF-8</ns0:project.build.sourceEncoding>
+    <ns0:maven.compiler.source>17</ns0:maven.compiler.source>
+    <ns0:maven.compiler.target>17</ns0:maven.compiler.target>
+    <ns0:junit.jupiter.version>5.10.2</ns0:junit.jupiter.version>
+  </ns0:properties>
+
+  <ns0:dependencies>
+    
+    <ns0:dependency>
+      <ns0:groupId>org.junit.jupiter</ns0:groupId>
+      <ns0:artifactId>junit-jupiter</ns0:artifactId>
+      <ns0:version>${junit.jupiter.version}</ns0:version>
+      <ns0:scope>test</ns0:scope>
+    </ns0:dependency>
+  <dependency><groupId>org.hamcrest</groupId><artifactId>hamcrest</artifactId><version>2.2</version><scope>test</scope></dependency></ns0:dependencies>
+
+  <ns0:build>
+    <ns0:plugins>
+      <ns0:plugin>
+        <ns0:groupId>org.apache.maven.plugins</ns0:groupId>
+        <ns0:artifactId>maven-surefire-plugin</ns0:artifactId>
+        <ns0:version>3.2.5</ns0:version>
+        <ns0:configuration>
+          <ns0:useModulePath>false</ns0:useModulePath>
+          <ns0:includes>
+            <ns0:include>**/*Test.java</ns0:include>
+          </ns0:includes>
+        </ns0:configuration>
+      </ns0:plugin>
+    </ns0:plugins>
+  </ns0:build>
+</ns0:project>

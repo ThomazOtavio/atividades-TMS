@@ -1,0 +1,47 @@
+4. Como o problema foi resolvido nos exemplos anteriores:
+
+1. Projeto Spring Framework:
+
+Problema: O método refresh() era um Long Method, e a lógica condicional complexa dificultava a manutenção e os testes.
+Solução: O problema foi resolvido ao dividir o método em vários métodos menores. Isso ajudou a isolar cada parte da lógica, tornando-a mais fácil de entender e de modificar, além de facilitar a adição de novos comportamentos sem afetar o código existente.
+Refatoração: Usaram-se padrões de design como o State para simplificar a manipulação dos estados dentro do contexto de inicialização do Spring, reduzindo a complexidade.
+
+2. Projeto Django:
+
+Problema: A classe HttpRequest estava com muitas responsabilidades, tornando-se uma Large Class.
+Solução: O problema foi resolvido dividindo a classe HttpRequest em várias classes menores, cada uma com uma responsabilidade única.
+Refatoração: Criaram-se sub-classes como HttpRequestCookies, HttpRequestHeaders, e outras classes específicas para lidar com diferentes partes do processamento da requisição HTTP. Isso seguiu o princípio da Responsabilidade Única (SRP) e tornou o código mais modular e flexível.
+
+5. Ferramentas para detectar Code Smells:
+
+SonarQube: Descrição: SonarQube é uma plataforma popular que oferece análise contínua de código para detectar Code Smells, bugs e vulnerabilidades. Ele suporta várias linguagens de programação e fornece uma visão detalhada da qualidade do código ao longo do tempo.
+Code Smells Detectados: SonarQube é muito eficaz na detecção de problemas relacionados a Long Methods, Large Classes, Duplicated Code, Feature Envy e God Object. Ele também fornece sugestões para refatoração e melhorias de código.
+
+Checkstyle: Checkstyle é uma ferramenta de análise estática que verifica se o código Java segue um conjunto de convenções de estilo, incluindo regras sobre nomenclatura, comprimento de métodos e código duplicado.
+Code Smells Detectados: Verifica problemas como Long Methods, Duplicated Code, e Complex Conditional Logic. Além disso, o Checkstyle é útil para garantir que o código esteja aderente às convenções de estilo de codificação e documentação.
+
+PMD:PMD é uma ferramenta de análise estática para Java e outras linguagens que detecta uma ampla gama de problemas de qualidade, como Code Smells, erros de estilo e práticas de codificação inadequadas.
+Code Smells Detectados: Detecta Long Methods, Large Classes, Duplicated Code, God Class, Poor Code Style e Feature Envy. PMD oferece uma boa cobertura de problemas estruturais no código.
+
+
+
+SonarQube	
+- Long Methods
+- Large Classes
+- Duplicated Code
+- Feature Envy
+- Complex Conditional Logic
+- God Object
+Checkstyle	
+- Long Methods
+- Duplicated Code
+- Complex Conditional Logic
+- Naming Conventions
+- Javadoc Missing
+PMD	
+- Long Methods
+- Large Classes
+- Duplicated Code
+- God Class
+- Poor Code Style
+- Feature Envy

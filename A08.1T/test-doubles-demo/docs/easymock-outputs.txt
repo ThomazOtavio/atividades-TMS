@@ -1,0 +1,18 @@
+# EasyMock — Saídas exemplificativas (3 casos)
+
+(A) Caminho feliz
+-----------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+
+(B) Chamada inesperada após `replay`
+------------------------------------
+java.lang.AssertionError:
+  Unexpected method call removeDocument("Ghost"):
+    ... stacktrace omitido ...
+
+(C) Expectativa não atendida em `verify`
+----------------------------------------
+java.lang.AssertionError:
+  Expectation failure on verify:
+  addDocument("WillNotBeCalled"): expected: 1, actual: 0
+    ... stacktrace omitido ...
