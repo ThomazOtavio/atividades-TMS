@@ -1,0 +1,122 @@
+	Testes de Unidade
+https://saucelabs.com/resources/blog/nunit-vs-xunit-vs-mstest-with-examples
+https://docs.gitlab.com/ci/testing/unit_test_report_examples/
+
+Técnicas:
+Testes de funções ou métodos isolados, para garantir que cada parte do código se comporte conforme o esperado.
+
+Ferramentas:
+JUnit (Java)
+xUnit (framework geral)
+NUnit (para C#)
+
+Artefatos Produzidos:
+
+Relatórios de execução: Mostram se as funções passaram ou falharam.
+Cobertura de código: Relatórios mostrando a porcentagem do código coberto pelos testes unitários.
+
+	Testes de Integração
+https://blog.postman.com/front-end-api-testing-cypress-postman/
+https://www.sages.io/blog/writing-tests-automatic-api
+
+Técnicas:
+Verificação das interações entre diferentes componentes do sistema.
+
+Ferramentas:
+Postman: Para testar APIs.
+JUnit: Para integração de testes de unidade com sistemas maiores.
+Cypress: Para testar integração em aplicações web.
+
+Artefatos Produzidos:
+Logs de execução: Mostram o fluxo de integração e identificam onde falhas de integração ocorreram.
+Relatórios de falhas de integração: Identificam pontos de falha quando os componentes interagem.
+
+	Testes de Sistema
+https://www.browserstack.com/guide/cypress-vs-selenium
+https://contextqa.com/self-generating-test-artifacts/
+
+Técnicas:
+Testes completos do sistema, verificando se o sistema como um todo funciona corretamente.
+
+Ferramentas:
+Selenium: Para automação de testes de sistemas web.
+Cypress: Para automação de testes de sistema.
+JUnit (para testes completos de funcionalidades do sistema).
+
+Artefatos Produzidos:
+Relatórios de execução de testes completos: Detalham o sucesso ou falha de testes completos.
+Documentação de falhas: Relatório das falhas encontradas no sistema como um todo.
+
+	Testes de Aceitação
+https://support.smartbear.com/testcomplete/docs/working-with/integration/cucumberstudio/index.html
+https://semaphore.io/community/tutorials/introduction-to-writing-acceptance-tests-with-cucumber
+
+Técnicas:
+Teste do sistema para garantir que ele atende aos requisitos do usuário.
+
+Ferramentas:
+Cucumber: Utiliza uma abordagem de BDD (Behavior Driven Development) para testar funcionalidades específicas com base em requisitos.
+TestComplete: Para automação de testes de aceitação.
+
+Artefatos Produzidos:
+Casos de teste baseados em requisitos: Casos de teste que validam a funcionalidade final do sistema conforme o comportamento esperado pelo usuário.
+
+	Testes de Usabilidade
+https://www.crazyegg.com/blog/best-usability-testing-tools/
+https://www.crazyegg.com/blog/user-experience-testing/
+
+Técnicas:
+Avaliação de como os usuários interagem com o sistema e sua facilidade de uso.
+
+Ferramentas:
+Crazy Egg: Para testes de usabilidade com mapas de calor.
+UserTesting: Plataforma para testes de usabilidade com gravação de interação do usuário.
+
+Artefatos Produzidos:
+Mapas de calor: Mostram onde os usuários clicam mais frequentemente.
+Feedback de usuários: Relatório de experiências dos usuários durante o uso do sistema.
+
+	Testes de Desempenho
+https://testgrid.io/blog/jmeter-vs-loadrunner/
+https://reintech.io/blog/conducting-performance-testing-jmeter-loadrunner
+
+Técnicas:
+Avaliação do comportamento do sistema sob diferentes cargas de trabalho.
+
+Ferramentas:
+JMeter: Para testes de desempenho e carga.
+LoadRunner: Para testar a capacidade do sistema de lidar com múltiplos usuários simultâneos.
+
+Artefatos Produzidos:
+Relatórios de carga: Detalham como o sistema se comporta sob diferentes níveis de carga.
+Gráficos de resposta: Indicadores de tempo de resposta sob várias condições de carga.
+
+	Testes de Segurança
+https://www.prosec-networks.com/en/blog/burp-suite-vs-owasp-zap-die-beliebtesten-tools-fuer-web-application-security-assessments/
+https://talent500.com/blog/designing-and-executing-security-testing-using-owasp-zap-and-burp-suite-to-identify-vulnerabilities/
+
+Técnicas:
+Identificação de vulnerabilidades e falhas de segurança.
+
+Ferramentas:
+OWASP ZAP: Para testes de segurança de aplicações web.
+Burp Suite: Para pentesting (teste de penetração) e detecção de falhas de segurança.
+
+Artefatos Produzidos:
+Relatórios de vulnerabilidades: Relatam as falhas de segurança encontradas.
+Documentação de brechas de segurança: Detalham como as vulnerabilidades podem ser exploradas.
+
+	Testes de Regressão
+https://marker.io/blog/regression-testing-tools
+https://digitaldefynd.com/IQ/guide-to-regression-testing/
+
+Técnicas:
+Verificação de que novas alterações no código não quebraram funcionalidades existentes.
+
+Ferramentas:
+Selenium: Para automação de testes de regressão.
+Cypress: Para validar que funcionalidades existentes não foram afetadas por novas alterações.
+
+Artefatos Produzidos:
+Relatórios de regressão: Resultados de testes após mudanças no código, mostrando se funcionalidades anteriores ainda funcionam.
+Logs de falhas: Detalham quaisquer falhas encontradas durante os testes de regressão.

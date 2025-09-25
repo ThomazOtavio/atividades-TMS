@@ -1,0 +1,118 @@
+GIT — ATIVIDADE: REPOSITÓRIOS E PRIMEIROS PASSOS
+
+Objetivo
+1) Pesquisar 3 projetos no GitHub e listá-los.
+2) Clonar um dos projetos e observar o que é gerado.
+3) Criar a pasta "hellogit" e inicializar um repositório novo.
+4) Criar o arquivo em branco hello.java e registrá-lo.
+5) Completar com código "Hello World" e repetir o processo indicando as alterações.
+
+======================================================================
+1) Pesquise 3 projetos no GitHub e liste-os
+======================================================================
+Sugestões (Java), todas com README claro e comunidade ativa:
+
+- spring-projects/spring-petclinic — aplicativo de exemplo oficial do ecossistema Spring (Boot + MVC + Data JPA). URL (clone via HTTPS):
+  https://github.com/spring-projects/spring-petclinic.git
+
+- junit-team/junit-framework — framework de testes para Java e JVM (JUnit 5). URL (clone via HTTPS):
+  https://github.com/junit-team/junit-framework.git
+
+- TheAlgorithms/Java — coleção educativa de algoritmos implementados em Java. URL (clone via HTTPS):
+  https://github.com/TheAlgorithms/Java.git
+
+(Escolha qualquer um deles ou outro de seu interesse.)
+
+======================================================================
+2) Escolha uma pasta e clone um desses projetos
+======================================================================
+Abra um terminal na pasta onde deseja salvar e rode (exemplo com Petclinic):
+
+  $ git clone https://github.com/spring-projects/spring-petclinic.git
+  $ cd spring-petclinic
+
+O que observar após o clone:
+  - A pasta oculta .git (metadados do repositório).
+  - Arquivos e pastas do projeto (README, pom.xml/gradle, src/, etc.).
+  - Configurações locais do repositório:  $ git config --list --local
+  - Últimos commits:                       $ git log --oneline -n 5
+
+Dicas para inspecionar:
+  macOS/Linux:  $ ls -la
+                $ tree -a -L 2   (se tiver o utilitário tree instalado)
+  Windows:      > dir /a
+                > tree /f
+
+======================================================================
+3) Crie a pasta "hellogit" e inicialize um novo repositório
+======================================================================
+  $ mkdir hellogit
+  $ cd hellogit
+  $ git init
+
+Verifique o que foi criado:
+  - A pasta .git/ dentro de hellogit (metadados).
+  - Estado do repositório:   $ git status
+  - Branch padrão (se configurado): init.defaultBranch (ex.: main).
+
+======================================================================
+4) Crie um arquivo em branco hello.java e registre no repositório
+======================================================================
+Criar arquivo vazio:
+  macOS/Linux:  $ touch hello.java
+  Windows (CMD):> type NUL > hello.java
+  Windows (PowerShell):> New-Item hello.java -ItemType File
+
+Verificar status e registrar:
+  $ git status
+  $ git add hello.java
+  $ git commit -m "chore: add empty hello.java"
+
+Confirmar o commit:
+  $ git log --oneline -n 1
+  $ git show --stat
+
+======================================================================
+5) Completar com "Hello World" e repetir o processo
+======================================================================
+Edite o arquivo hello.java com o código abaixo (sem 'public' para permitir nome do arquivo em minúsculas):
+
+----------------------------------
+class Hello {
+  public static void main(String[] args) {
+    System.out.println("Hello World");
+  }
+}
+----------------------------------
+
+Salvar, compilar e (opcional) executar:
+  Compilar:  $ javac hello.java
+  Executar:  $ java Hello
+
+Registrar a alteração no Git (mostrando o diff):
+  $ git status
+  $ git diff
+  $ git add -p           # opcional: revisar interativamente
+  $ git commit -m "feat: print Hello World in hello.java"
+
+Checar histórico e mudanças:
+  $ git log --oneline -n 2
+  $ git show --stat
+
+======================================================================
+Checklist rápido
+======================================================================
+[ ] Listei 3 projetos do GitHub (links + breve descrição)
+[ ] Clonei 1 projeto e observei .git, arquivos e últimos commits
+[ ] Criei a pasta hellogit e rodei git init
+[ ] Criei hello.java vazio, add/commit
+[ ] Escrevi o código Hello World, add/commit e verifiquei o diff
+
+======================================================================
+Dicas e problemas comuns
+======================================================================
+- Se 'git' não for reconhecido, reabra o terminal após instalar e verifique o PATH.
+- Se o clone exigir autenticação, prefira HTTPS + PAT (Token) ou chaves SSH configuradas.
+- No Windows, ative "Mostrar arquivos ocultos" para ver .git no Explorer.
+- Mensagens de commit: descreva o 'porquê' e o 'o quê' (p.ex., "feat: ..." para novas funcionalidades; "fix: ..." para correções).
+- Se o 'javac' não existir, instale um JDK (ex.: Temurin/OpenJDK) e reabra o terminal.

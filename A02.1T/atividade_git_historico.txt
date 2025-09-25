@@ -1,0 +1,98 @@
+GIT — ATIVIDADE: HISTÓRICO
+(Use o repositório usado nas atividades anteriores. Para o item 2, clone o repositório do código-fonte do próprio Git.)
+
+======================================================================
+0) PRÉ-REQUISITOS
+======================================================================
+- Estar em um repositório Git válido.
+- Para o item 2, obter o código-fonte do Git:
+  $ git clone https://github.com/git/git.git
+  $ cd git
+
+Dicas de navegação do pager:
+  - Use ↑/↓ ou PgUp/PgDn para rolar; 'q' para sair do pager.
+
+======================================================================
+1) Teste “comandos de histórico” e interprete as saídas
+======================================================================
+Comece pelo básico:
+  $ git log
+  (Lista commits em ordem reversa; mostra autor, data e mensagem.)
+
+Formas comuns do material (varie e interprete):
+  # visão compacta (hash abreviado + assunto)
+  $ git log --oneline -n 10
+
+  # resumo de arquivos/linhas afetados
+  $ git log --stat -n 3
+
+  # formatação personalizada (ex.: hash curto, autor, data curta, assunto)
+  $ git log --pretty=format:"%h %an %ad %s" --date=short -n 5
+
+  # filtros por autor, termo da mensagem e conteúdo
+  $ git log --author="Seu Nome"
+  $ git log --grep="palavra-chave"
+  $ git log -S "trecho_de_codigo_ou_string"
+
+  # por período (datas ISO) e sem merges
+  $ git log --since="2024-01-01" --before="2024-02-01" --no-merges
+
+  # restringindo a um caminho (pathspec)
+  $ git log -- src/ README.md
+
+  # visão de grafo/decorada (útil para branches)
+  $ git log --graph --decorate --oneline --all --max-count=20
+
+Para inspecionar um commit específico:
+  $ git show <hash>            # diff e metadados do commit
+  $ git show --stat <hash>     # apenas resumo de arquivos/linhas
+
+Contar resultados rapidamente:
+  macOS/Linux:  (…com o mesmo comando de log…) | wc -l
+  Windows (CMD): (…com o mesmo comando de log…) | find /c /v ""
+
+======================================================================
+2) Executar a consulta no repositório do próprio Git
+======================================================================
+No diretório do repositório “git” (código-fonte do Git), rode:
+  $ git log --pretty="%h - %s" --author=gitster --since="2008-10-01" --before="2008-11-01" --no-merges -- t/
+
+O que cada opção faz:
+  --pretty="%h - %s"   => imprime “hash_abreviado - assunto”
+  --author=gitster     => filtra commits cujo autor contém “gitster” (apelido do mantenedor do Git)
+  --since= / --before= => limita ao intervalo 2008-10-01 .. 2008-10-31
+  --no-merges          => exclui commits de merge
+  --                    => separa opções de caminhos (pathspec)
+  t/                    => restringe a commits que tocam a pasta de testes (t/)
+
+Dicas:
+  - Salvar a saída:  … > consulta_gitster.out
+  - Ver detalhes de um dos commits listados:  git show <hash>
+  - Ver apenas nomes de arquivos tocados nesse commit:  git show --name-only <hash>
+
+======================================================================
+3) Analisar e interpretar os resultados
+======================================================================
+- Estrutura da linha: “<hash_curto> - <assunto>”. Ex.: “a1b2c3d - t0001: ajusta teste …”
+- Cada linha representa um commit (não merge) do autor “gitster” dentro do período 2008-10-01 a 2008-10-31 e que modificou algo sob t/.
+- Itens para observar e anotar:
+  • Quantos commits apareceram no intervalo (conte com pipe para wc -l/find).
+  • Temas recorrentes nas mensagens (p. ex., correções/ajustes em testes).
+  • Se necessário, abra 1–2 commits com “git show <hash>” e identifique:
+      - arquivos alterados (devem estar sob t/),
+      - motivo da mudança (pela mensagem),
+      - escopo (linhas adicionadas/removidas em --stat).
+- Conclusão sugerida: descreva em 3–5 linhas o foco das mudanças desse período no diretório t/, citando exemplos (hash curto e assunto).
+
+(Se quiser comparar com outro autor/intervalo, repita variando --author e --since/--before.)
+
+======================================================================
+Checklist rápido
+======================================================================
+[ ] Executei variações de git log (--oneline, --stat, --pretty, filtros)
+[ ] Usei --since/--before, --no-merges e pathspec
+[ ] Rodei a consulta do item 2 no repositório do Git
+[ ] Analisei os resultados: contagem, temas, e abri commits com git show
+[ ] Redigi uma interpretação curta do conjunto de commits
+
+FIM

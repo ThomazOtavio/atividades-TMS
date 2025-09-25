@@ -1,0 +1,46 @@
+ATIVIDADE:: MODELOS DE MATURIDADE DE PROCESSOS
+
+1) CMMI — o que representam os níveis 1 a 5? O que isso implica para as empresas?
+• Nível 1 – Initial (Inicial): trabalho ad hoc e reativo; resultados pouco previsíveis. Implicações: alta variabilidade, atrasos e retrabalho; dependência de heróis.
+• Nível 2 – Managed (Gerenciado): gestão no nível de projeto (planejar, executar, medir e controlar). Implicações: prazos e custos mais controlados por projeto; ainda há variação entre equipes.
+• Nível 3 – Defined (Definido): processos padronizados organizacionais guiam projetos/programas. Implicações: consistência entre times, onboarding mais rápido, base para melhoria sistemática.
+• Nível 4 – Quantitatively Managed (Gerenciado Quantitativamente): controle estatístico e metas quantitativas para processo/produto. Implicações: previsibilidade forte, decisões orientadas por dados, mitigação proativa de variação.
+• Nível 5 – Optimizing (Em Otimização): melhoria contínua com análise causal e inovação disciplinada. Implicações: organização usa experimentação e aprendizado para elevar desempenho continuamente.
+Observação: os níveis são cumulativos; cada nível pressupõe práticas do anterior. Há ainda a noção de Maturity Level 0 (Incomplete) em versões recentes, mas a escala clássica comparada é 1–5.
+
+2) MPS-BR — níveis e implicações
+• G – Parcialmente Gerenciado: gestão básica de requisitos e trabalho; processos iniciais. Implicações: ainda há grande variabilidade e dependência de indivíduos.
+• F – Gerenciado: planejamento/acompanhamento mais consistente; políticas definidas para processos chave. Implicações: maior previsibilidade por projeto.
+• E – Parcialmente Definido: processos definidos organizacionalmente, cobrindo mais áreas (além de gerência). Implicações: mais padronização e reutilização de ativos de processo.
+• D – Largamente Definido: processos organizacionais abrangentes e institucionalizados. Implicações: consistência entre unidades, melhor governança e medição.
+• C – Definido: processos definidos e integrados; foco em engenharia e suporte. Implicações: aumento de produtividade/qualidade e base para níveis quantitativos.
+• B – Gerenciado Quantitativamente: metas/controles quantitativos e gestão de desempenho por dados. Implicações: forte previsibilidade e controle de variação.
+• A – Em Otimização: melhoria contínua guiada por análise causal e inovação. Implicações: evolução sustentada e alinhada aos objetivos de negócio.
+Observação: a nomenclatura pode variar levemente entre guias ao longo do tempo (ex.: “C – totalmente definido” vs “definido”), mas o sentido dos níveis (G→A) é estável.
+
+3) Como uma empresa pode se capacitar para usar um modelo de maturidade? Quais os benefícios?
+Capacitação (passos práticos):
+• Diagnóstico (gap analysis): comparar processos atuais com as práticas do modelo; priorizar lacunas por impacto no negócio.
+• Treinamento e mentoria: formar equipe interna (qualidade/SEPG) e multiplicadores; contratar parceiro/consultoria reconhecida (CMMI Partners ou Instituições Autorizadas MPS).
+• Roadmap de adoção: definir escopo (unidade organizacional/projetos), metas de nível e marcos; iniciar por processos de maior risco/valor.
+• Process assets: desenhar/ajustar processos, templates, políticas, checklists e guias; alinhar ferramentas (ALM, GC, CI/CD, medição).
+• Pilotos e institucionalização: aplicar em projetos-piloto, coletar métricas, ajustar e estender para demais equipes; realizar avaliações internas (pre-appraisal) antes do appraisal oficial.
+• Avaliação oficial e melhoria contínua: publicar resultados quando fizer sentido comercial; manter ciclo de lições aprendidas e indicadores.
+Benefícios:
+• Maior previsibilidade (prazo/custo/qualidade) e redução de retrabalho; melhoria de satisfação do cliente e do time.
+• Vantagem competitiva: credibilidade em licitações/contratos; facilidade de escala e integração entre times.
+• Decisão baseada em dados e cultura de melhoria contínua; melhor governança de riscos e conformidade.
+
+4) Exemplos de empresas certificadas/avaliadas
+• CMMI (exemplos públicos recentes):
+  – Kingland (EUA) — CMMI Maturity Level 5 (software/dev). 
+  – NARTech (EUA) — CMMI Level 5 (desenvolvimento). 
+  – Birlasoft (Índia) — CMMI v2.0 Level 5.
+  Observação: a verificação oficial é feita no “Published Appraisal Results (PARS)”, o diretório público do CMMI.
+• MPS-BR (exemplos citados pela Softex e imprensa):
+  – Dextra, Radix, Metadados, Elotech, IVIA, Lumis, iFactory, Shift, ETEG, BHS — empresas listadas pela Softex em matéria sobre companhias com selo MPS.
+  – IMA (Campinas/SP) — divulgou conquista de nível D (MPS-BR) em comunicado oficial.
+Observação: o status das certificações/avaliações muda com o tempo; consulte as bases oficiais (Softex/MPS — “Empresas Avaliadas”; CMMI — PARS) para confirmação atual.
+
+Dica de uso
+• Para começar: escolha o modelo mais aderente ao seu contexto (ex.: MPS-BR para mPMEs brasileiras; CMMI se há exigência internacional/contratual), defina escopo e metas, e conduza uma adoção incremental, priorizando processos que mais reduzem risco e variabilidade.

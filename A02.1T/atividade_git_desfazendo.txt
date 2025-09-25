@@ -1,0 +1,170 @@
+GIT — ATIVIDADE: DESFAZENDO
+(Use o repositório hellogit das atividades anteriores)
+
+IMPORTANTE (do material, págs. 1–54):
+- Prefira os comandos novos de “desfazer”: 
+  • Tirar do Stage:   git restore --staged <arquivo>
+  • Descartar na worktree: git restore --worktree <arquivo>   (ou: git restore <arquivo>)
+- “git commit --amend” reescreve o último commit (novo hash). Evite usar em commits já publicados.
+
+======================================================================
+0) PRÉ-REQUISITOS
+======================================================================
+- Estar na pasta do repositório (hellogit) e com estado “clean”:
+  $ git status
+
+======================================================================
+1) Criar reparo.md com orientações sobre --amend e commitar
+======================================================================
+Criar arquivo com conteúdo inicial (exemplos equivalentes por SO):
+
+macOS/Linux:
+  $ cat > reparo.md << 'EOF'
+  # Orientações: git commit --amend
+  - Use para corrigir o **último commit** (ex.: arquivos esquecidos).
+  - Cria um **novo commit** que substitui a ponta do branch (hash muda).
+  - Mantém a mensagem anterior com **--no-edit**; para editar, use sem essa opção.
+  - Evite após “push” público (histórico compartilhado muda).
+  - Dicas:
+    * git add <arquivos>   # inclua o que faltou
+    * git commit --amend --no-edit
+    * git show -1 --stat   # confira o novo commit
+  EOF
+
+Windows (PowerShell):
+  > @'
+  # Orientações: git commit --amend
+  - Use para corrigir o **último commit** (ex.: arquivos esquecidos).
+  - Cria um **novo commit** que substitui a ponta do branch (hash muda).
+  - Mantém a mensagem anterior com **--no-edit**; para editar, use sem essa opção.
+  - Evite após “push” público (histórico compartilhado muda).
+  - Dicas:
+    * git add <arquivos>   # inclua o que faltou
+    * git commit --amend --no-edit
+    * git show -1 --stat   # confira o novo commit
+  '@ | Out-File -Encoding utf8 reparo.md
+
+Adicionar e registrar:
+  $ git add reparo.md
+  $ git commit -m "docs: orientações sobre git commit --amend"
+
+Confirmar que o commit foi realizado:
+  $ git log --oneline -n 1
+  $ git show -1 --name-status
+
+======================================================================
+2) Criar referencias.md com referências do help e associar ao commit anterior com --amend
+======================================================================
+Obter referências da ajuda:
+  $ git help commit
+  # (procure por “--amend” e resuma pontos relevantes)
+
+Criar o arquivo com trechos/resumo (ex.: “Notas sobre --amend”):
+macOS/Linux:
+  $ cat > referencias.md << 'EOF'
+  # Referências do help: --amend
+  - “Substitui o commit atual” (novo objeto de commit).
+  - “Mantém a mesma mensagem com --no-edit; sem opção, abre editor.”
+  - “Use para adicionar mudanças esquecidas ao último commit.”
+  - “Cuidado ao reescrever histórico compartilhado.”
+  (Fonte: git help commit, seção --amend)
+  EOF
+
+Windows (PowerShell):
+  > @'
+  # Referências do help: --amend
+  - “Substitui o commit atual” (novo objeto de commit).
+  - “Mantém a mesma mensagem com --no-edit; sem opção, abre editor.”
+  - “Use para adicionar mudanças esquecidas ao último commit.”
+  - “Cuidado ao reescrever histórico compartilhado.”
+  (Fonte: git help commit, seção --amend)
+  '@ | Out-File -Encoding utf8 referencias.md
+
+Associar ao commit anterior (sem alterar a mensagem):
+  $ git add referencias.md
+  $ git commit --amend --no-edit
+
+Conferir que o hash mudou e o arquivo entrou:
+  $ git log --oneline -n 1
+  $ git show -1 --name-status
+  # (Opcional) comparar com o commit anterior:
+  $ git diff --name-only HEAD@{1}..HEAD
+
+======================================================================
+3) Esvaziar reparo.md, adicionar ao Stage e comparar versões
+======================================================================
+Zerar o conteúdo:
+  macOS/Linux:     $ : > reparo.md
+  Windows (CMD):   > type NUL > reparo.md
+  Windows (PowerShell): > Clear-Content reparo.md
+
+Adicionar ao Stage:
+  $ git add reparo.md
+
+Comparar entre as áreas:
+  # Worktree vs. Stage (agora idênticos) — não deve aparecer diff:
+  $ git diff -- reparo.md
+
+  # Stage vs. Repositório (HEAD) — mostra remoção do conteúdo:
+  $ git diff --staged -- reparo.md
+
+  # Repositório vs. Worktree — equivalente ao --staged neste caso:
+  $ git diff HEAD -- reparo.md
+
+======================================================================
+4) Editar novamente reparo.md (texto “Prestes a perder meus dados…”) e observar diffs
+======================================================================
+Adicionar a linha solicitada (sem fazer stage):
+  macOS/Linux:  $ printf "Prestes a perder meus dados....
+" >> reparo.md
+  Windows (PowerShell):  > Add-Content reparo.md "Prestes a perder meus dados...."
+
+Observar as diferenças:
+  # Worktree vs. Stage — mostra a nova linha adicionada:
+  $ git diff -- reparo.md
+
+  # Stage vs. Repositório — ainda mostra o arquivo “vazio” (estado do Stage):
+  $ git diff --staged -- reparo.md
+
+  # Comparar tudo contra o repositório:
+  $ git diff HEAD -- reparo.md
+
+======================================================================
+5) Remover o arquivo do Stage e repetir verificações
+======================================================================
+Tirar do Stage (sem perder as mudanças na worktree):
+  $ git restore --staged reparo.md
+
+Verificar novamente:
+  $ git status
+  $ git diff --staged -- reparo.md   # agora vazio (nada staged)
+  $ git diff -- reparo.md            # worktree vs. índice (mostra a linha “Prestes...”)
+  $ git diff HEAD -- reparo.md       # repo vs. worktree (todas as mudanças pendentes)
+
+======================================================================
+6) Restaurar o arquivo original do repositório (descartar edições da worktree)
+======================================================================
+Descartar as mudanças locais e voltar ao conteúdo do commit:
+  # Restaura somente a cópia da área de trabalho a partir do índice/HEAD
+  $ git restore --worktree reparo.md
+  # (equivalente simples)
+  $ git restore reparo.md
+
+Verificar:
+  $ git status            # deve ficar “clean”
+  $ git diff -- reparo.md # sem diferenças
+
+(Se também quisesse restaurar o Stage à versão do HEAD:)
+  $ git restore --staged reparo.md
+
+======================================================================
+Checklist rápido
+======================================================================
+[ ] Criei e committei reparo.md com orientações sobre --amend
+[ ] Criei referencias.md e usei git commit --amend --no-edit
+[ ] Esvaziei reparo.md, fiz stage e comparei (worktree/stage/repo)
+[ ] Adicionei “Prestes a perder meus dados....” e observei os diffs
+[ ] Tirei do Stage com git restore --staged e conferi
+[ ] Restaurei o arquivo original, descartando as edições locais
+
+FIM

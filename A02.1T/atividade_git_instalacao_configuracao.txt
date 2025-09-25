@@ -1,0 +1,108 @@
+ATIVIDADE — INSTALAÇÃO E CONFIGURAÇÃO DO GIT (págs. 1–54)
+
+Objetivo
+1) Instalar o Git conforme seu sistema operacional.
+2) Verificar se os comandos do Git funcionam no terminal.
+3) Fazer as configurações iniciais.
+4) Testar a ajuda do Git.
+
+==============================
+1) INSTALAÇÃO
+==============================
+Escolha o seu sistema operacional e siga os passos.
+
+WINDOWS
+A) Baixar o instalador no site oficial (Git for Windows) e executar.
+B) Durante o instalador, recomendações comuns:
+   - PATH: “Use Git from the Windows Command Prompt” (ou padrão recomendado).
+   - Editor: escolha o de sua preferência (ex.: VS Code).
+   - line endings (EOL): mantenha a recomendação padrão (checkout Windows-style, commit Unix-style).
+C) Concluir a instalação. O instalador adiciona “Git Bash” e integra ao Prompt/PowerShell.
+
+macOS
+Opção 1 (Homebrew):
+  $ brew install git
+Opção 2 (Instalador oficial .pkg do site) ou via Xcode Command Line Tools:
+  $ xcode-select --install
+
+LINUX
+Debian/Ubuntu:
+  $ sudo apt update && sudo apt install -y git
+Fedora:
+  $ sudo dnf install -y git
+Arch:
+  $ sudo pacman -S git
+Outras distros: instale o pacote “git” com o gerenciador correspondente.
+
+==============================
+2) VERIFICAR EXECUÇÃO NO TERMINAL
+==============================
+Abra um terminal (Prompt/PowerShell no Windows; Terminal no macOS/Linux) e rode:
+  $ git --version
+
+Opcionalmente verifique o caminho do executável:
+  macOS/Linux:  $ which git
+  Windows:      > where git
+
+Se aparecer a versão (ex.: git version 2.x.y), está OK.
+
+==============================
+3) CONFIGURAÇÕES INICIAIS
+==============================
+Defina nome, e-mail e branch padrão (globalmente). Substitua pelos seus dados.
+
+Identidade:
+  $ git config --global user.name "Seu Nome"
+  $ git config --global user.email "seu.email@exemplo.com"
+
+Branch padrão “main” para repositórios novos:
+  $ git config --global init.defaultBranch main
+
+Fim de linha (EOL) — recomendado:
+  Windows:
+    $ git config --global core.autocrlf true
+  macOS/Linux:
+    $ git config --global core.autocrlf input
+
+Editor padrão (opcional). Ex.: VS Code:
+  $ git config --global core.editor "code --wait"
+
+Verificar o que foi configurado:
+  $ git config --list --global
+  (detalhe com origem dos arquivos)
+  $ git config --list --show-origin
+
+==============================
+4) TESTAR A AJUDA
+==============================
+Listas e guias:
+  $ git help        (sumário)
+  $ git help -a     (todos os subcomandos)
+  $ git help -g     (guias)
+
+Páginas de ajuda de um comando específico (abre manpage ou navegador):
+  $ git help config
+  $ git help add
+  $ git add --help  (atalho)
+  $ git -h          (ajuda curta do comando principal)
+
+==============================
+CHECKLIST RÁPIDO
+==============================
+[ ] Instalei o Git (Windows/macOS/Linux)
+[ ] “git --version” imprime a versão
+[ ] Configurei user.name e user.email
+[ ] Defini init.defaultBranch=main
+[ ] Ajustei core.autocrlf conforme meu SO
+[ ] “git help -a” funciona
+
+==============================
+DIAGNÓSTICO RÁPIDO (se algo der errado)
+==============================
+- “git: command not found” ou “não é reconhecido”: reabra o terminal, confirme a instalação e PATH.
+- No Windows, se “where git” não retornar caminho, reinstale marcando a opção de adicionar ao PATH.
+- Em ambientes corporativos com proxy, pode ser necessário:
+    $ git config --global http.proxy http://usuario:senha@proxy:porta
+    $ git config --global https.proxy http://usuario:senha@proxy:porta
+
+FIM

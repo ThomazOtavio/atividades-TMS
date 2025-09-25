@@ -1,0 +1,456 @@
+# ===========================
+# Basic Commits
+# ===========================
+cd "C:\Users\User\Desktop\git kata\git-kata-basic-commits"
+git init
+sc file.txt 'Conteúdo inicial'
+git status
+git add file.txt
+git status
+git commit -m "Commit inicial"
+git status
+echo 'Nova linha' >> file.txt
+git status
+git add file.txt
+git status
+echo 'Outra linha' >> file.txt
+git commit -m "Segunda mudança"
+git status
+git log --oneline --graph
+
+# ===========================
+# Basic Staging
+# ===========================
+cd "C:\Users\User\Desktop\git kata\git-kata-basic-staging"
+git init
+sc file.txt '1'
+git diff
+git diff --staged
+git add file.txt
+git diff
+git diff --staged
+echo '2' > file.txt
+git diff
+git diff --staged
+git restore --staged file.txt
+git status
+git add file.txt
+git commit -m "Commit file.txt"
+echo '3' > file.txt
+git status
+git restore file.txt
+git status
+
+# ===========================
+# Tags
+# ===========================
+cd "C:\Users\User\Desktop\git kata\git-kata-tag"
+git init
+sc file.txt 'Conteúdo'
+git add file.txt
+git commit -m "Commit inicial"
+git tag v1.0
+git commit -m "Mudança 1"
+git tag -a v1.1 -m "Versão 1.1"
+git log --oneline --graph --all
+git tag
+git show v1.1
+git tag -d v1.0
+
+# ===========================
+# Ignore
+# ===========================
+cd "C:\Users\User\Desktop\git kata\git-kata-ignore"
+git init
+sc foo.s 'conteúdo de teste'
+git status
+sc .gitignore '*.s'
+git status
+git add .gitignore
+git commit -m "Adiciona .gitignore"
+sc file1.txt 'primeiro txt'
+echo '*.txt' >> .gitignore
+git status
+echo 'modificação' >> file1.txt
+git status
+sc file2.txt 'segundo txt'
+git status
+git rm --cached file1.txt
+git status
+sc file3.txt 'terceiro txt'
+echo '!file3.txt' >> .gitignore
+git status
+
+# ===========================
+# Amend
+# ===========================
+cd "C:\Users\User\Desktop\git kata\git-kata-amend"
+git init
+sc foo.txt 'conteúdo inicial'
+git add foo.txt
+git commit -m "Commit inicial"
+git status
+git log -p
+sc bar.txt 'conteúdo de bar.txt'
+git add bar.txt
+git commit --amend
+git log -p
+git commit --amend
+git log --oneline --graph
+
+# ===========================
+# Basic Cleaning
+# ===========================
+cd "C:\Users\User\Desktop\git kata\git-kata-basic-cleaning"
+git init
+mkdir src
+mkdir obj
+sc src/mylib.c 'conteúdo da biblioteca'
+sc src/tempfile.tmp 'arquivo temporário'
+sc obj/mylib.o 'arquivo objeto'
+sc obj/temp.o 'outro objeto'
+ls -R
+git clean -n
+git add src/mylib.c
+git clean -n
+git clean -n -d
+git clean -f -d
+
+# ===========================
+# Basic Branching
+# ===========================
+cd "C:\Users\User\Desktop\git kata\git-kata-basic-branching"
+git init
+sc readme.txt 'Repositório de Branching'
+git add readme.txt
+git commit -m "Commit inicial"
+git branch branch1 
+git branch
+git switch branch1 
+git status
+ls
+sc file1.txt 'Thomaz'
+git add file1.txt
+git commit -m "Adiciona file1.txt na branch1"
+git log --oneline --graph
+git switch master
+git log --oneline --graph
+sc file2.txt 'Arquivo na master'
+git add file2.txt
+git commit -m "Adiciona file2.txt na master"
+git log --oneline --graph --all
+git switch branch1 
+git diff branch1 master
+
+# ===========================
+# Fast-forward Merge
+# ===========================
+cd "C:\Users\User\Desktop\git kata\git-kata-ff-merge"
+git init
+sc greeting.txt 'Hello, world!'
+git add greeting.txt
+git commit -m "Commit inicial com greeting.txt"
+git branch feature/uppercase
+git switch feature/uppercase
+git status
+sc greeting.txt 'HELLO, WORLD!'
+git add greeting.txt
+git commit -m "Transforma greeting.txt em maiúsculas"
+git branch
+git log --oneline --graph --all
+git switch master
+type greeting.txt
+git diff master feature/uppercase
+git merge feature/uppercase
+type greeting.txt
+git branch -d feature/uppercase
+
+# ===========================
+# 3-Way Merge
+# ===========================
+cd "C:\Users\User\Desktop\git kata\git-kata-3-way-merge"
+git init
+sc greeting.txt 'Hello!'
+git add greeting.txt
+git commit -m "Commit inicial com greeting.txt"
+git branch greeting
+git switch greeting
+sc greeting.txt 'Olá, mundo!'
+git add greeting.txt
+git commit -m "Altera greeting.txt para minha saudação favorita"
+git switch master
+sc README.md 'Este é um repositório de testes de Git Kata'
+git add README.md
+git commit -m "Adiciona README.md ao master"
+git log --oneline --graph --all
+git diff master greeting
+git merge greeting
+git log --oneline --graph --all
+git branch -d greeting
+# ===========================
+# Merge Conflict
+# ===========================
+cd "C:\Users\User\Desktop\git kata\git-kata-merge-conflict"
+git init
+sc file.txt 'Linha inicial'
+git add file.txt
+git commit -m "Commit inicial na master"
+
+git branch merge-conflict-branch1
+git switch merge-conflict-branch1
+sc file.txt 'Conteúdo da branch1'
+git add file.txt
+git commit -m "Modificação na branch1"
+
+git switch master
+sc file.txt 'Conteúdo na master'
+git add file.txt
+git commit -m "Modificação na master"
+
+git merge merge-conflict-branch1
+git status
+# Resolva manualmente o conflito em file.txt
+git add file.txt
+git commit -m "Resolve merge conflict de merge-conflict-branch1"
+
+git log --oneline --graph --all
+# ===========================
+# Merge Mergesort
+# ===========================
+cd "C:\Users\User\Desktop\git kata\git-kata-mergesort"
+git init
+sc mergesort.txt 'Função Mergesort - versão inicial'
+git add mergesort.txt
+git commit -m "Commit inicial na master"
+
+git branch Mergesort-Impl
+git switch Mergesort-Impl
+sc mergesort.txt 'Função Mergesort - versão branch Mergesort-Impl'
+git add mergesort.txt
+git commit -m "Implementação Mergesort na branch Mergesort-Impl"
+
+git switch master
+sc mergesort.txt 'Função Mergesort - versão master'
+git add mergesort.txt
+git commit -m "Modificação mergesort.txt na master"
+
+git branch
+git merge Mergesort-Impl
+git status
+# Resolva manualmente o conflito em mergesort.txt
+git add mergesort.txt
+git commit -m "Resolve merge conflict da branch Mergesort-Impl"
+
+# Alternativa com mergetool:
+# git mergetool --tool=emerge
+# git status
+# git add mergesort.txt
+# git commit -m "Resolve merge conflict da branch Mergesort-Impl"
+# ===========================
+# Rebase Branch
+# ===========================
+cd "C:\Users\User\Desktop\git kata\git-kata-rebase"
+git init
+sc greeting.txt 'Hello, world!'
+git add greeting.txt
+git commit -m "Commit inicial na master"
+
+git branch uppercase
+git switch uppercase
+sc greeting.txt 'HELLO, WORLD!'
+git add greeting.txt
+git commit -m "Mensagem em maiúsculas na branch uppercase"
+
+git log --oneline --graph --all
+git switch master
+git log --oneline --graph --all
+
+git switch uppercase
+git rebase master
+git log --oneline --graph --all
+
+git switch master
+git merge uppercase
+git log --oneline --graph --all
+# ===========================
+# Basic Stashing
+# ===========================
+cd "C:\Users\User\Desktop\git kata\git-kata-basic-stashing"
+git init
+sc file.txt 'Conteúdo inicial'
+git add file.txt
+git commit -m "Commit inicial"
+
+echo 'Linha staged' >> file.txt
+git add file.txt
+echo 'Linha não staged' >> file.txt
+
+git status
+git log --oneline --graph
+
+git stash
+git status
+git log --oneline --graph
+git stash list
+
+sc bug.txt 'Correção do bug'
+git add bug.txt
+git commit -m "Corrige bug em bug.txt"
+
+git stash apply
+git status
+
+git reset --hard HEAD
+
+git stash apply --index
+git status
+
+git stash drop
+git stash list
+
+git log --oneline --graph --all
+# ===========================
+# Detached Head
+# ===========================
+cd "C:\Users\User\Desktop\git kata\git-kata-detached-head"
+git init
+
+# Criando commits iniciais
+sc file.txt 'Conteúdo A'
+git add file.txt
+git commit -m "A"
+
+sc file.txt 'Conteúdo B'
+git add file.txt
+git commit -m "B"
+
+sc file.txt 'Conteúdo C'
+git add file.txt
+git commit -m "C"
+
+# Verificando status e log
+git status
+git log --oneline --graph --all
+
+# Entrando em detached head no commit A
+git switch --detach 59fec85
+
+# Verificando status e log no detached head
+git status
+git log --oneline --graph --all
+
+# Criando branch a partir do commit antigo
+git branch the-beginning
+
+# Voltando para a master
+git switch master
+git log --oneline --graph --all
+# ===========================
+# Git Reset
+# ===========================
+cd "C:\Users\User\Desktop\git kata\git-kata-reset"
+git init
+
+sc file.txt 'Conteúdo A'
+git add file.txt
+git commit -m "A"
+
+sc file.txt 'Conteúdo B'
+git add file.txt
+git commit -m "B"
+
+sc file.txt 'Conteúdo C'
+git add file.txt
+git commit -m "C"
+
+git status
+git log --oneline --graph --all
+
+# Reset soft
+git reset --soft HEAD~1
+git status
+git log --oneline --graph --all
+
+# Reset mixed
+git reset --mixed HEAD~1
+git status
+git log --oneline --graph --all
+
+# Reset hard
+git reset --hard HEAD~1
+git status
+git log --oneline --graph --all
+
+# Revert
+git revert HEAD~1
+git status
+git log --oneline --graph --all
+# ===========================
+# Squash Commits
+# ===========================
+cd "C:\Users\User\Desktop\git kata\git-kata-squashing"
+git init
+
+# Cinco commits de exemplo
+sc file.txt 'Linha 1'
+git add file.txt
+git commit -m "Commit 1"
+
+echo 'Linha 2' >> file.txt
+git add file.txt
+git commit -m "Commit 2"
+
+echo 'Linha 3' >> file.txt
+git add file.txt
+git commit -m "Commit 3"
+
+echo 'Linha 4' >> file.txt
+git add file.txt
+git commit -m "Commit 4"
+
+echo 'Linha 5' >> file.txt
+git add file.txt
+git commit -m "Commit 5"
+
+git log --oneline --graph
+
+# Squash dos cinco commits
+git rebase -i HEAD~5
+# No editor interativo:
+# - pick no primeiro commit
+# - squash nos outros quatro
+# - salvar e sair
+# - editar mensagem final do commit, salvar e sair
+
+git log --oneline --graph
+# ===========================
+# Basic Revert
+# ===========================
+cd "C:\Users\User\Desktop\git kata\git-kata-basic-revert"
+git init
+
+# Commits de exemplo
+sc greeting.txt "Olá Mundo"
+git add greeting.txt
+git commit -m "Add greeting.txt"
+
+sc credentials.txt "user:senha"
+git add credentials.txt
+git commit -m "Add credentials"
+
+# Verificar log e conteúdo
+git log --oneline
+cat greeting.txt
+
+# Revert do commit mais recente
+git revert HEAD
+git log --oneline
+ls
+cat greeting.txt
+
+# Revert de um commit específico (SHA do commit que adicionou credentials.txt)
+git log --oneline
+git revert <sha_do_commit_credentials>
+git log --oneline
+ls
+git show <sha_do_commit_credentials>

@@ -1,0 +1,129 @@
+
+GIT — ATIVIDADE:: TAGS (Pesquisa e Prática)
+
+Este arquivo complementa o material da disciplina (págs. 1–54) e as atividades anteriores.
+Inclui: (A) pesquisa de uso de tags em projetos reais; (B) exemplos adicionais;
+(C) filtros de tags (ex.: "1.1.*"); (D) prática no repositório local "hellogit".
+
+==================================================
+(A) PROJETOS PESQUISADOS ANTERIORMENTE
+==================================================
+
+1) spring-projects/spring-petclinic
+   • Uso de tags: possui a tag "1.5.x" (2017). É um marcador de linha 1.5 e não segue SemVer estrito.
+   • Ex.: tag: 1.5.x  → aponta para commit c36452a.
+   • Observação: o projeto hoje foca no branch principal; versões são menos frequentes via tags.
+
+2) junit-team/junit-framework (JUnit 5)
+   • Uso de tags: SemVer com prefixo "r" (ex.: r5.13.4) e pré‑lançamentos com sufixos "-M#" (milestone) e "-RC#" (release candidate).
+   • Exemplos recentes: r5.13.4, r6.0.0-M1, r6.0.0-RC3.
+   • Característica: tags assinadas (GPG) e anotadas, com notas de release.
+
+3) TheAlgorithms/Java
+   • Uso de tags: não possui tags de versão (até a data da consulta).
+   • A organização foca em exemplos educacionais; releases versionadas não são usadas aqui.
+
+==================================================
+(B) OUTROS PROJETOS CONHECIDOS (referências úteis)
+==================================================
+
+1) Node.js (nodejs/node)
+   • Esquema: SemVer com prefixo "v" (ex.: v24.8.0). Muitos releases (Current e LTS).
+   • Exemplos recentes: v24.8.0 (Current), v22.20.0 (LTS "Jod"), v20.19.5 (LTS "Iron").
+   • Cada tag aponta para um commit específico; ex.: v22.20.0 → commit caa20e2.
+   • Frequência: releases quinzenais/mensais são comuns em linhas ativas.
+
+2) Kubernetes (kubernetes/kubernetes)
+   • Esquema: SemVer com prefixo "v" e múltiplas linhas mantidas (ex.: v1.34.1, v1.33.5, v1.32.9).
+   • Pré‑releases: sufixo "-rc.N" (ex.: v1.34.0-rc.2).
+   • Cada tag aponta para um commit; ex.: v1.34.1 → commit 93248f9.
+
+3) CPython (python/cpython)
+   • Esquema: SemVer com prefixo "v"; usa pré‑releases b# (beta) e rc# (release candidate).
+   • Exemplos: v3.13.7 (release), v3.14.0rc3 (pré‑release), v3.14.0b4 (beta).
+   • Tags assinadas e anotadas; cada tag aponta para um commit (ex.: v3.13.7 → bcee1c3).
+
+==================================================
+(C) FILTRANDO TAGS (ex.: "1.1.*")
+==================================================
+
+Observação: muitos projetos prefixam tags com "v" (ex.: v1.1.*) ou usam outro prefixo (ex.: JUnit usa "r").
+Sempre ajuste o padrão ao esquema do projeto.
+
+1) Listar tags locais por padrão:
+   git tag -l "v1.1.*"
+   git tag -l "1.1.*"
+   git tag -l "r1.1.*"
+
+2) Mapear tags → commits (no repositório clonado):
+   # Mostra SHA e nome da tag
+   git show-ref --tags | grep -E 'refs/tags/v1\.1\.'
+
+   # Só os SHAs das tags que casarem:
+   git tag -l "v1.1.*" | while read t; do git rev-list -n 1 "$t"; done
+
+3) Consultar tags sem clonar (via rede):
+   # Ex.: Kubernetes (ajuste URL e padrão conforme o projeto)
+   git ls-remote --tags https://github.com/kubernetes/kubernetes.git 'v1.1.*'
+
+   # Outro exemplo (JUnit usa prefixo r):
+   git ls-remote --tags https://github.com/junit-team/junit-framework.git 'r1.1.*'
+
+Dica: se o padrão "1.1.*" não existir no projeto escolhido, teste outro existente
+(como "v1.34.*" em Kubernetes, "r5.13.*" em JUnit, etc.).
+
+==================================================
+(D) PRÁTICA: CRIAR E EXPLORAR TAGS NO REPOSITÓRIO "hellogit"
+==================================================
+
+Pré‑requisito: já ter o repositório "hellogit" com commits (hello.java, etc.).
+
+1) Conferir o histórico e preparar:
+   cd hellogit
+   git log --oneline --decorate --graph --all
+
+2) Criar uma TAG ANOTADA para o commit mais recente (release inicial):
+   git tag -a v0.1.0 -m "Primeira versão pública (Hello World)"
+
+3) Criar uma TAG ANOTADA para um commit anterior (ex.: protótipo):
+   # Copie o <SHA> desejado do git log
+   git tag -a v0.0.1 <SHA> -m "Protótipo inicial"
+
+4) Criar uma TAG LEVE para comparação (apenas ponteiro, sem metadados):
+   git tag v0.1.0-light
+
+5) Listar e ordenar tags por versão:
+   git tag --sort=version:refname
+
+6) Ver o que cada tag aponta e comparar anotada vs leve:
+   git show v0.1.0
+   git show v0.1.0-light
+   # Dica: a anotada exibe bloco "tag", tagger, data e mensagem;
+   # a leve mostra diretamente o commit (não há objeto de tag separado).
+
+   # Ver tipo do objeto apontado (tag vs commit):
+   git cat-file -t v0.1.0
+   git cat-file -t v0.1.0-light
+
+   # Ver conteúdo bruto de uma tag anotada:
+   git cat-file -p v0.1.0
+
+7) Renomear/corrigir tag local (forçar mover para HEAD atual — use com cuidado):
+   git tag -f v0.1.0
+   # Apagar tag local:
+   git tag -d v0.1.0-light
+
+8) (Opcional) Publicar tags em um remoto (se existir origin configurado):
+   git push origin v0.1.0
+   git push origin --tags      # envia todas as tags
+
+==================================================
+(E) RESUMO RÁPIDO
+==================================================
+• Tags são rótulos imutáveis (por convenção) para commits; releases em plataformas como GitHub normalmente se apoiam em tags.
+• SemVer (MAJOR.MINOR.PATCH) é comum; prefixos usuais: "v" (Node, K8s, CPython), "r" (JUnit).
+• Pré‑releases: -alpha/-beta/-rc, ou sufixos próprios (JUnit: -M# e -RC#).
+• Anotada (git tag -a) cria um objeto de tag com autor/data/mensagem (recomendado para releases).
+• Leve (git tag <nome>) é só um ponteiro (sem metadados).
+
+Bom trabalho!

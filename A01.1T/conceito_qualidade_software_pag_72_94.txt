@@ -1,0 +1,43 @@
+CONCEITO DE QUALIDADE DE SOFTWARE — SÍNTESE (págs. 72–94)
+
+1) Pressman × Hirama — comum e diferente
+• Pontos em comum
+  - A qualidade é medida pela capacidade do produto de atender às necessidades das partes interessadas, 
+    apoiada por requisitos claros e por padrões/boas práticas de desenvolvimento.
+  - Processo importa: métodos e práticas disciplinadas (revisões, V&V, GC, métricas) dão previsibilidade ao resultado.
+  - Existem atributos explícitos (funcionais e de desempenho) e implícitos (ex.: manutenibilidade) que compõem a percepção de qualidade.
+• Diferenças de ênfase
+  - Pressman: foca a “conformidade” a requisitos e a padrões documentados como critério principal de qualidade; 
+    destaca que as características implícitas também são esperadas de um software profissional.
+  - Hirama: organiza a Engenharia de Software em camadas (processo, métodos e ferramentas) com “qualidade na base”; 
+    reforça que produtividade e qualidade caminham juntas e que ferramentas sozinhas não resolvem sem processo e competência.
+
+2) Definição (em minhas palavras, sintetizando os autores)
+• Qualidade de software é o grau em que o produto atende às necessidades explícitas e implícitas das partes interessadas, 
+  conformando-se a requisitos e padrões acordados, e sendo produzido por um processo capaz, previsível e sustentável.
+
+3) Na prática — como os aspectos vistos ajudam a AVALIAR um software existente?
+• Conformidade a requisitos e padrões
+  - Verificar se o produto entrega o que foi especificado (funcionalidade e desempenho) e se segue os padrões internos/externos adotados.
+• Atributos internos e implícitos
+  - Avaliar manutenibilidade, testabilidade, legibilidade, modularidade e cobertura de testes (além do “funciona?”).
+• Evidência de processo
+  - Buscar evidências de V&V, gestão de configuração, revisões técnicas, rastreabilidade e métricas significativas.
+• Qualidade em uso e não-funcionais
+  - Observar usabilidade, confiabilidade, eficiência, segurança, portabilidade e compatibilidade em cenários reais.
+
+4) Na prática — como os aspectos vistos ajudam a CONSTRUIR um software com qualidade?
+• Requisitos e critérios de aceitação
+  - Tornar critérios verificáveis desde o início (Definition of Done inclui testes, documentação e NFRs).
+• Processo + métodos + ferramentas (camadas)
+  - Instituir processo de desenvolvimento com V&V, revisões por pares, automação (CI/CD), GC e ambientes representativos.
+• Métricas e melhoria contínua
+  - Definir indicadores (defeitos, lead time, retrabalho, cobertura por risco, SLO/SLI) e conduzir melhorias com base em dados.
+• Cultura e competência
+  - Capacitar equipes; padronizar práticas; reconhecer que ferramentas potencializam, mas não substituem método e disciplina.
+• Prevenção de regressões e sustentabilidade
+  - Pirâmide de testes, refatoração contínua, gestão de dívida técnica, documentação viva e arquitetura que suporte evolução.
+
+Observação
+• Esta síntese segue os pontos centrais das páginas 72–94: convergência entre “conformidade a requisitos/padrões” (Pressman) 
+  e “qualidade como base do processo” (Hirama), aplicadas tanto na avaliação quanto na construção de software.

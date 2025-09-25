@@ -1,0 +1,20 @@
+https://www.devmedia.com.br/testes-de-software-entendendo-defeitos-erros-e-falhas/22280
+
+Defeito
+ 
+É qualquer imperfeição ou inconsistência no produto do software ou em seu processo, um defeito é também uma não conformidade. O Defeito faz parte do produto, é algo que esta implementada no código de maneira errada.
+
+Erro 
+
+O Erro pode ser um resultado de um defeito ou uma falha, como um retorno esperado, que por causa de uma falha teve um valor diferente do que esperado.
+
+Falha
+
+Esta mais ligada ao hardware, como uma rede inacessível, queda de energia. Uma falha pode ocorrer por causa de um erro, por exemplo, houve um retorno de um valor não esperado, como null, isso é um erro, e por causa desse null ocasionou uma falha no sistema.
+
+https://www.machinet.net/tutorial-pt/what-is-bug-in-software-testing
+
+O Que é um Bug em Testes de Software
+
+
+Um bug em testes de software é um comportamento inesperado que diverge do esperado, podendo afetar funcionalidade, desempenho, interface ou segurança. Detectá-lo e corrigi-lo, por meio de testes e boas práticas de programação, é essencial para garantir software de qualidade.

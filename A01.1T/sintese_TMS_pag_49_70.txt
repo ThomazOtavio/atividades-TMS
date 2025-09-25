@@ -1,0 +1,33 @@
+SÍNTESE — QUALIDADE EM TMS (com base nas páginas 49–70)
+
+Este texto responde, de forma direta e prática, aos quatro pontos solicitados.
+
+1) Características comuns a esses softwares
+• Dependem de processos contínuos e maduros para sustentar qualidade ao longo do ciclo de vida — testes, manutenção e evolução caminham juntos.
+• Reuso, integração com legados e múltiplas partes interessadas são a regra; logo, gestão de configuração e controle de mudanças tornam-se críticos.
+• Necessitam de medição e aprendizado organizacional: métricas de processo/produto, revisões, lições aprendidas e post-mortems alimentam melhoria contínua.
+• Qualidade não é estática: é construída por práticas, papéis e governança (não apenas por ferramentas).
+
+2) Aspectos que definem as questões de qualidade
+• Processo organizacional: adoção de modelos de maturidade (ex.: CMMI/MPS-BR) para padronizar práticas, medir e melhorar continuamente.
+• Referências externas: padrões e boas práticas de comunidades (IEEE/ACM) e literatura de engenharia de software — criam linguagem comum e critérios.
+• Integração TMS ↔ Qualidade: testes, manutenção e evolução definem confiabilidade, capacidade de mudança, recuperabilidade e sustentabilidade do software.
+• Governança de requisitos e de mudanças: rastreabilidade, critérios de aceitação e gestão de riscos orientam o que “qualidade” significa em cada contexto.
+• Evidências e benchmarking: comparar abordagens, montar glossários/tabelas de termos, e usar resultados de pesquisa para embasar decisões.
+
+3) O que pode ser feito para melhorar
+• Roadmap de maturidade: definir o nível atual (G→A no MPS-BR; 1→5 no CMMI) e metas, priorizando práticas de maior impacto (gestão de mudanças, verificação/validação, medição).
+• Institucionalizar TMS como função de qualidade: pipelines de CI/CD com gates, pirâmide de testes, automação de regressão, análise causal de falhas e backlog de dívida técnica.
+• Capacitação e cultura: participação em IEEE/ACM, estudo de autores de referência/tendência, comunidades internas de prática e taxonomia comum de termos.
+• Planejamento e métricas: SLOs/SLIs, indicadores de retrabalho/defeitos, cobertura de testes por risco, critérios de “Definition of Done” que incluam manutenção/evolução.
+• Melhoria baseada em evidências: executar atividades dirigidas (pesquisa comparativa, tabelas de conceitos, estudos de caso) e inspecionar/ajustar processos regularmente.
+
+4) Onde os pontos falhos podem ser corrigidos
+• No processo organizacional: implementar/elevar práticas previstas por CMMI/MPS-BR (gestão de mudanças, V&V, medição, análise e resolução causal, gestão de riscos).
+• Em requisitos e arquitetura: explicitar requisitos não funcionais, trade-offs e restrições; padronizar decisões; promover revisões técnicas e rastreabilidade ponta a ponta.
+• Em testes e operação: ampliar cobertura por risco, ambientes representativos, dados controlados, monitoramento ativo, canary/progressive delivery e rollback comprovado.
+• Em manutenção/evolução: refatoração contínua, políticas claras para dívida técnica e compatibilidade, automação para prevenir regressões e documentação viva.
+• Na integração com legados: estabilizar interfaces, introduzir “anti-corruption layers”, isolar dependências críticas e planejar modernização incremental.
+
+Observação
+• Esta síntese está ancorada no conteúdo das páginas 49–70, que destacam a ligação entre TMS e qualidade, o papel de modelos de maturidade (CMMI/MPS-BR), o uso de referências da comunidade (IEEE/ACM) e a importância de atividades dirigidas de pesquisa e comparação para consolidar práticas e linguagem comum.

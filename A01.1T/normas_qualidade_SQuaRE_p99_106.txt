@@ -1,0 +1,41 @@
+ATIVIDADE:: NORMAS DE QUALIDADE — SÍNTESE (com base nas páginas 99–106)
+
+1) Como as normas definem os aspectos de qualidade
+• ISO/IEC 9126 (1991): apresenta 6 características de qualidade do produto — Funcionalidade, Confiabilidade, Usabilidade, Eficiência, Manutenibilidade e Portabilidade.
+• ISO/IEC 25010 (Família SQuaRE): atualiza/organiza o modelo em duas visões complementares —
+  (a) Qualidade do produto: Adequação funcional, Eficiência de desempenho, Compatibilidade, Usabilidade, Confiabilidade, Segurança, Manutenibilidade e Portabilidade.
+  (b) Qualidade em uso: Eficácia, Eficiência (em uso), Satisfação, Liberdade de risco e Cobertura do contexto.
+• A Família SQuaRE (série 250xx) também define divisões normativas para requisitos, modelos, medição, avaliação e gestão da qualidade, cobrindo o ciclo completo (do “o que é qualidade” até “como medir/avaliar/gerir”).
+
+2) Tabela de correspondência PT–EN (com definições breves)
+(Formato TSV — cada coluna separada por TAB: Português	Inglês	Definição breve)
+Adequação funcional	Functional suitability	O software fornece funções corretas e completas para suas tarefas.
+Eficiência de desempenho	Performance efficiency	Desempenho adequado (tempo, recursos, capacidade) sob condições definidas.
+Compatibilidade	Compatibility	Coexistência e interoperabilidade com outros sistemas/produtos.
+Usabilidade	Usability	Facilidade de aprender, entender e usar pelo público-alvo.
+Confiabilidade	Reliability	Mantém o nível de serviço (maturidade, disponibilidade, tolerância a falhas) em condições específicas.
+Segurança	Security	Protege informação e ativos (confidencialidade, integridade, autenticidade, responsabilização).
+Manutenibilidade	Maintainability	Facilidade de modificar, corrigir e evoluir (modularidade, testabilidade, analisabilidade).
+Portabilidade	Portability	Facilidade de transferir/instalar em diferentes ambientes.
+Eficácia (em uso)	Effectiveness	Usuários atingem objetivos com precisão e completude.
+Eficiência (em uso)	Efficiency (in use)	Objetivos atingidos com esforço/recursos aceitáveis pelo usuário.
+Satisfação	Satisfaction	Grau de conforto/confiança dos usuários no produto no seu contexto de uso.
+Liberdade de risco	Freedom from risk	Minimiza riscos econômicos, à saúde/segurança e ambientais.
+Cobertura do contexto	Context coverage	Mantém qualidade quando variam usuários, tarefas e ambientes.
+
+3) Mudanças entre versões — houve? São significativas?
+• Sim. Da ISO/IEC 9126 para a ISO/IEC 25010 houve renomeações e reagrupamentos (p. ex., “Funcionalidade” → “Adequação funcional”; “Eficiência” → “Eficiência de desempenho”), a inclusão explícita de “Compatibilidade” e “Segurança” no modelo de produto, e a formalização da “Qualidade em uso” com cinco características. Isso amplia e torna mais precisa a linguagem comum para especificação e medição da qualidade — portanto, mudanças significativas.
+• Revisões recentes dentro da família SQuaRE continuam refinando termos e escopo para refletir a prática atual (sem alterar o espírito: separar o que é qualidade, como especificá-la, medi-la e avaliá-la).
+
+4) Por que há diferentes categorias de normas na Família SQuaRE?
+• Para cobrir o ciclo completo de qualidade de software/sistemas com coerência e especialização, a série SQuaRE é organizada em divisões:
+  – 2500n: Gestão da Qualidade (Quality Management) — princípios/gestão do programa de qualidade.
+  – 2501n: Modelo de Qualidade (Quality Model) — o “o quê medir” (produto, uso, dados).
+  – 2502n: Medição da Qualidade (Quality Measurement) — o “como medir”: modelos de medição e medidas.
+  – 2503n: Requisitos de Qualidade (Quality Requirements) — “como especificar” NFRs/qualidade.
+  – 2504n: Avaliação da Qualidade (Quality Evaluation) — processos e critérios de avaliação.
+• Ao separar “modelo”, “medida”, “requisito”, “avaliação” e “gestão”, as normas evitam ambiguidades e permitem que organizações escolham os blocos adequados sem perder a consistência do todo.
+
+Observações finais
+• Este material foi elaborado diretamente com base nas páginas 99–106 dos slides e na organização da família SQuaRE (ISO/IEC 250xx).
+• Sugestão prática: use esta tabela TSV acima para montar uma planilha (Excel/Google Sheets) e complementar com indicadores/métricas locais.

@@ -1,0 +1,68 @@
+ATIVIDADE:: BOAS PRÁTICAS — RESPOSTAS
+(Usando também as páginas 52–56 do arquivo TMS_aula_01_Introdução_a_TMS.pdf)
+
+1) Associações profissionais — temas principais observados nos sites
+
+• IEEE – Institute of Electrical and Electronics Engineers
+  - Missão destacada: avanço da tecnologia em benefício da humanidade; promoção de publicações, conferências, padrões e atividades profissionais/educacionais. Biblioteca digital: IEEE Xplore.
+  - Temas recorrentes nos canais da IEEE Computer Society: qualidade de software (conforme ISO/IEC 25010), medição e melhoria contínua, SQA, segurança, confiabilidade, e engenharia de requisitos e de testes.
+  - Exemplos de recursos:
+    · “What is Software Quality?” (IEEE Computer Society) — visão geral, mapeando características de qualidade ao ISO/IEC 25010.
+    · SWEBOK v4.0a (IEEE Computer Society) — guia de corpo de conhecimento de engenharia de software, gratuito para uso acadêmico.
+    
+• ACM – Association for Computing Machinery
+  - Missão destacada: avanço da arte, ciência e engenharia de computação, servindo a interesses públicos e profissionais. Maior sociedade mundial de computação; promove conferências, SIGs, revistas e a ACM Digital Library.
+  - Temas recorrentes no portal e na ACM DL: qualidade de software, revisões sistemáticas, evidências em engenharia de software, padrões de projeto, medição, e processos ágeis.
+  - Exemplos de recursos na ACM DL:
+    · “Strength of evidence in systematic reviews in software engineering” (Sjøberg et al., 2008).
+    · “Quality assessment of systematic reviews in software engineering” (2015).
+    
+• SBC – Sociedade Brasileira de Computação
+  - Papel destacado: principal associação científica de computação no Brasil; promove eventos (CSBC, CBSoft, SBES), publicações (ex.: JBCS) e exames (POSCOMP). Biblioteca digital: SOL — Brazilian Computer Society Open Library.
+  - Temas recorrentes no portal e na SOL: qualidade de software, processos e modelos (MPS.BR), avaliação e medição de qualidade, estudos de caso e revisões sistemáticas.
+  - Exemplos de recursos na SOL:
+    · “Técnicas de Leitura de Software: Uma Revisão Sistemática” (Mafra; Travassos, 2005).
+    · “QPS – Modelo para Avaliação da Qualidade de Produtos de Software” (Rocha et al., 2017).
+
+2) Artigos selecionados por biblioteca digital (um ou mais por acervo)
+
+• IEEE / IEEE Computer Society
+  - Suryanarayana, G.; Zimmermann, O.; Pautasso, C. “Software Process versus Design Quality”, IEEE Software, 2015 — discute como práticas de processo impactam a qualidade de projeto e como reduzir “design smells” com revisões arquiteturais e rastreabilidade.
+  - IEEE Computer Society. “Guide to the Software Engineering Body of Knowledge (SWEBOK)”, v4.0a — referência abrangente com capítulos sobre garantia de qualidade, medição e testes.
+
+• ACM Digital Library
+  - Sjøberg, D. I. K. et al. “Strength of evidence in systematic reviews in software engineering”, 2008 — apresenta critérios para avaliar a força de evidências em estudos primários e secundários.
+  - Zhang, H. et al. “Quality assessment of systematic reviews in software engineering”, 2015 — analisa estratégias usadas por pesquisadores para avaliação de qualidade em revisões.
+
+• SOL (SBC OpenLib)
+  - Mafra, S. N.; Travassos, G. H. “Técnicas de Leitura de Software: Uma Revisão Sistemática”, SBES 2005 — sistematiza técnicas de leitura em inspeções para apoiar garantia de qualidade.
+  - Rocha, A. R. et al. “QPS – Modelo para Avaliação da Qualidade de Produtos de Software”, SBQS 2017 — propõe abordagem ampla para avaliação de qualidade considerando dimensões organizacionais, de engenharia, serviço e produto.
+
+3) Autores indicados — principais obras e contribuições para Qualidade de Software
+
+Pioneiros
+• E. W. Dijkstra — Ênfase em correção por construção, programação estruturada e prova de programas; Turing Lecture “The Humble Programmer” (1972). Obra marcante: “A Discipline of Programming” (1976).
+• C. A. R. Hoare — Lógica de Hoare (base axiomática para correção), “Communicating Sequential Processes” (CSP), e influências profundas no projeto de linguagens.
+
+Referências
+• Barry W. Boehm — Economia de software e modelos de custo (COCOMO); ciclo de vida espiral; obra clássica “Software Engineering Economics” (1981).
+• Watts S. Humphrey — Garantia de processo e melhoria organizacional; PSP/TSP; obra “Managing the Software Process” (1989).
+• David L. Parnas — Modularização e encapsulamento por “information hiding”; artigo seminal “On the Criteria To Be Used in Decomposing Systems into Modules” (1972).
+
+Tendências/Eng. de Software Moderna
+• Michael Feathers — “Working Effectively with Legacy Code” (2004) — técnicas de isolamento, caracterização de dependências e “seams” para melhorar qualidade em bases legadas.
+• Martin Fowler — “Refactoring” (1999/2018) e “Patterns of Enterprise Application Architecture”; forte foco em design evolutivo, refatorações seguras e arquitetura.
+• Robert C. Martin — Série “Clean” (ex.: “Clean Code”), princípios SOLID e disciplina de código limpo como fator de qualidade.
+• Kent Beck — “Extreme Programming Explained” e “Test-Driven Development: By Example”; práticas ágeis, TDD e feedback rápido como alavancas de qualidade.
+
+4) Observações gerais (ligadas às páginas do material e aos portais)
+• As três associações indicadas aparecem no material-base com seus papéis e bibliotecas: IEEE/IEEE Xplore; ACM/ACM DL; SBC/SOL.
+• Em todos os acervos há ampla produção sobre atributos e modelos de qualidade (ISO/IEC 25010), medição, SQA, processos e métodos ágeis/lean — conectando teoria (padrões, modelos e corpos de conhecimento) com prática (estudos empíricos, revisões sistemáticas e guias).
+
+5) Referências consultadas (seleção)
+— Material-base (slides): páginas 52–56, “Boas Práticas – Associações Profissionais, Bibliotecas e Autores”.
+— IEEE Computer Society (computer.org): “What is Software Quality?”; SWEBOK v4.0a.
+— IEEE Software (Computer Society): Suryanarayana et al., “Software Process versus Design Quality”, 2015.
+— ACM Digital Library: Sjøberg et al., “Strength of evidence in systematic reviews in software engineering”, 2008; Zhang et al., “Quality assessment of systematic reviews in software engineering”, 2015.
+— SOL – SBC OpenLib: Mafra; Travassos (2005), Rocha et al. (2017).
+— Autores clássicos: Dijkstra (A Discipline of Programming; Turing Lecture), Hoare (CSP; Turing Lecture), Boehm (Software Engineering Economics), Humphrey (Managing the Software Process), Parnas (On the Criteria…), Feathers (Working Effectively with Legacy Code), Fowler (Refactoring), Robert C. Martin (Clean Code), Kent Beck (XP; TDD).

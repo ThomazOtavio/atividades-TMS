@@ -1,0 +1,90 @@
+GIT — ATIVIDADE: IGNORANDO ARQUIVOS
+
+Pré-requisito
+- Use o repositório criado na atividade anterior (hellogit) ou qualquer repositório de teste.
+- Observação: o Git usa por padrão o arquivo **.gitignore** (não “.ignore”). Se o enunciado citar .ignore, substitua por .gitignore.
+
+======================================================================
+1) Resultado esperado para um repositório com um arquivo .gitignore
+======================================================================
+Exemplo de conteúdo do .gitignore (adicione na raiz do repositório):
+--------------------------------------------------------------------
+# Ignora qualquer arquivo .log e .tmp em qualquer pasta
+*.log
+*.tmp
+
+# Ignora a pasta build/ somente na raiz
+/build/
+
+# Ignora qualquer pasta com nome dist em qualquer nível
+**/dist/
+
+# Ignora o arquivo secrets.txt (onde quer que esteja)
+secrets.txt
+
+# Não ignorar um arquivo específico mesmo que a regra acima exista
+!dist/keep.me
+
+# Ignora qualquer pasta de cache do Python (exemplo de padrão de diretório)
+**/__pycache__/
+--------------------------------------------------------------------
+
+O que esperar desse .gitignore:
+- Arquivos com extensão .log e .tmp NÃO aparecerão em “git status” como não rastreados.
+- A pasta build/ na raiz será ignorada; outras “build” fora da raiz não (a menos que haja outra regra).
+- Qualquer pasta dist/ (em qualquer profundidade) será ignorada.
+- O arquivo secrets.txt, se existir em qualquer lugar, será ignorado.
+- dist/keep.me NÃO será ignorado (regra com “!” tem precedência), mas atenção: a pasta pai não pode estar totalmente ignorada sem exceção — mantenha a exceção para o que precisa ser versionado.
+- Dica: Regras mais abaixo sobrepõem regras acima; “/” no início ancora à raiz; “/” no fim indica diretório; “**” casa níveis intermediários.
+
+======================================================================
+2) Incluir um arquivo hello.tmp no repositório
+======================================================================
+No diretório do repositório (hellogit):
+  $ echo "" > hello.tmp        # macOS/Linux
+  > type NUL > hello.tmp       # Windows (CMD)
+  > New-Item hello.tmp -ItemType File   # PowerShell
+
+======================================================================
+3) Observar o status SEM incluí-lo no repositório
+======================================================================
+Antes de configurar o ignore, ele aparecerá como “untracked”:
+  $ git status
+  # Deve listar hello.tmp como "Untracked files"
+
+======================================================================
+4) Alterar o repositório para ignorar este arquivo
+======================================================================
+Adicionar regra ao .gitignore para ignorar arquivos .tmp:
+  $ echo "*.tmp" >> .gitignore       # macOS/Linux
+  > echo *.tmp >> .gitignore         # Windows (CMD/PowerShell)
+
+Conferir o efeito:
+  $ git status
+  # hello.tmp não deve mais aparecer
+
+Verificação explícita:
+  $ git check-ignore -v hello.tmp
+  # Mostra qual regra do .gitignore causou o ignore
+
+Commitar o .gitignore (boa prática versioná-lo):
+  $ git add .gitignore
+  $ git commit -m "chore: ignore .tmp files"
+
+CASO ESPECIAL — se o arquivo já tivesse sido commitado antes:
+  # .gitignore não afeta arquivos que já estão no índice/histórico;
+  # para parar de rastrear, use:
+  $ git rm --cached hello.tmp
+  $ git commit -m "chore: stop tracking hello.tmp (ignored)"
+
+======================================================================
+Checklist rápido
+======================================================================
+[ ] Criei hello.tmp
+[ ] Verifiquei “git status” (apareceu como untracked antes do ignore)
+[ ] Adicionei "*.tmp" ao .gitignore
+[ ] Confirmei que hello.tmp saiu do status (e/ou usei git check-ignore)
+[ ] Commitei o .gitignore
+[ ] (Se necessário) usei git rm --cached para deixar de rastrear arquivos já commitados
+
+FIM

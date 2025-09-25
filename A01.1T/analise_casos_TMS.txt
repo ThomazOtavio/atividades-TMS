@@ -1,0 +1,95 @@
+ANÁLISE DE CASOS – TMS (Introdução a Testes e Melhoria de Software)
+
+Este documento sintetiza os casos discutidos em aula e os casos pesquisados, respondendo:
+• Quais são os principais vilões nessas histórias?
+• O que poderia ser feito para evitar tais problemas?
+• Como avaliar a qualidade desses softwares?
+• Qual é a relação entre os casos?
+• Quais foram os impactos?
+
+==================================================
+PARTE A — CASOS DO ARQUIVO DA AULA
+==================================================
+
+1) Ariane 5 (Voo 501, 1996)
+• Principais vilões: reuso de software com pressupostos inválidos (código do Ariane 4), conversão numérica que gerou overflow sem tratamento, single point of failure no sistema inercial. 
+• Como evitar: revalidação completa ao mudar contexto/missão; testes com perfis operacionais reais; tratamento de exceções com modo degradado; redundância com isolamento de falhas.
+• Avaliação de qualidade (ISO/IEC 25010): fraquezas em Confiabilidade (robustez/tolerância a falhas) e Safety; sinais de problema em Manutenibilidade (reuso sem revalidação de requisitos).
+• Relação com demais: mudança não controlada de contexto + governança de engenharia insuficiente.
+• Impactos: perda do lançador e da carga útil; repercussão pública e recomendações formais no relatório de investigação.
+
+2) Therac-25 (1985–1987)
+• Principais vilões: remoção de intertravamentos de hardware; race conditions; processo de garantia de segurança inadequado; aprendizado insuficiente com quase-acidentes.
+• Como evitar: intertravamentos físicos independentes; análises de perigo (hazard analysis), revisão formal; cultura de segurança (registro, auditoria e resposta a incidentes).
+• Qualidade: falhas graves em Safety e Confiabilidade; também Usabilidade (interface propensa a erro).
+• Relação: novamente, escolhas de projeto + processo de engenharia que não controlaram o risco.
+• Impactos: overdoses com vítimas; mudanças duradouras em práticas de software para equipamentos médicos.
+
+3) Windows 98 no COMDEX (1998)
+• Principais vilões: instabilidade de driver/plug-and-play em demo ao vivo; integração frágil de hardware.
+• Como evitar: smoke tests e matrizes de compatibilidade; ambiente de demo “congelado” (golden image); uso de mocks/stubs para periféricos.
+• Qualidade: Confiabilidade (robustez diante de falha de driver) e Compatibilidade (integração de dispositivos).
+• Relação: integração e validação insuficientes sob condições reais.
+• Impactos: dano reputacional (sem prejuízo direto aos usuários finais).
+
+==================================================
+PARTE B — CASOS PESQUISADOS
+==================================================
+
+4) Bug do Milênio (Y2K)
+• Principais vilões: representação do ano com 2 dígitos em sistemas legados; forte acoplamento entre sistemas e dados.
+• Como evitar: padrões para data/tempo (quatro dígitos, calendários), inventário/gestão de dependências, programas contínuos de modernização e gestão de dívida técnica.
+• Qualidade: Confiabilidade e Compatibilidade (troca de dados). O risco foi mitigado por esforço global de remediação.
+• Relação: pressupostos antigos não revalidados quando o contexto muda (padrão comum também no Ariane).
+• Impactos: custos bilionários de correção; incidentes reais acabaram sendo pontuais graças à preparação.
+
+5) Queda do sistema da British Airways (2017)
+• Principais vilões: falha de energia em datacenter e retorno não controlado da alimentação, afetando servidores (relatos de erro humano no procedimento); resiliência insuficiente.
+• Como evitar: desenho elétrico com interlocks e sequenciamento; runbooks e dupla checagem (“two‑person rule”); failover testado entre datacenters; exercícios regulares de recuperação.
+• Qualidade: Confiabilidade/Recuperabilidade e Continuidade (resiliência).
+• Relação: risco operacional + dependência concentrada de um local/infra.
+• Impactos: dezenas de milhares de passageiros afetados, centenas de voos cancelados, prejuízos significativos e litígios.
+
+6) Interrupção do AWS S3 em us‑east‑1 (2017)
+• Principais vilões: comando de manutenção com parâmetro incorreto que removeu mais servidores do que o previsto; arquitetura que permitiu grande “blast radius” em uma única região.
+• Como evitar: guardrails operacionais (confirmações, rate limits), isolamento de falha por domínio/serviço, estratégia multi‑região por padrão, “game days” de recuperação.
+• Qualidade: Confiabilidade; Manutenibilidade (ferramentas/operabilidade); Portabilidade/Arquitetura (controle regional).
+• Relação: mudança operacional mal contida, similar a BA e outros casos.
+• Impactos: interrupções generalizadas em serviços que dependem de S3 por várias horas.
+
+7) CrowdStrike & Microsoft – BSOD global em Windows (2024)
+• Principais vilões: atualização defeituosa do sensor Falcon (controle de qualidade da atualização) que acionou tela azul em massa; alta dependência de um único agente de endpoint.
+• Como evitar: rollouts progressivos com “canaries” reais, kill‑switch/rollback rápido, validação em ampla matriz de versões, janelas de atualização e opção de opt‑in para ambientes críticos.
+• Qualidade: Confiabilidade (pipeline de atualização), Segurança operacional (impacto sistêmico), Maturidade de release.
+• Relação: mesmo padrão do S3/BA — mudança mal controlada com amplo raio de impacto.
+• Impactos: milhões de dispositivos afetados e paralisações setoriais (aviação, bancos, saúde).
+
+==================================================
+PADRÕES EM COMUM (SÍNTESE)
+==================================================
+• Mudanças sem contenção: releases/ops sem guardrails e sem canary aumentam risco sistêmico. 
+• Pressupostos não revalidados: reuso/legado fora de contexto (Ariane, Y2K). 
+• Dependência concentrada: um único componente/região/fornecedor torna-se ponto único de falha (IRU da Ariane, um agente EDR, uma região de nuvem, um datacenter). 
+
+==================================================
+CHECKLIST DE PREVENÇÃO (APLICÁVEL AOS CASOS)
+==================================================
+Engenharia/Arquitetura
+• Isolamento de falhas e “graceful degradation”; multi‑AZ/Região; circuit breakers; intertravamentos físicos para safety.
+Mudanças seguras
+• Canary/progressive delivery; feature flags; rollback automatizado; “two‑person rule” para operações de risco.
+Testes/Operações
+• Testes operacionais com cenários reais; “chaos game days”; post‑mortems sem culpados; SLOs/SLIs de disponibilidade; inventário de dependências e dívida técnica.
+
+==================================================
+REFERÊNCIAS (SELECIONADAS)
+==================================================
+• Relatório da ESA sobre o Ariane 5 V501 (Failure of Ariane 5 Flight 501).
+• Leveson & Turner – Investigation of the Therac‑25 Accidents.
+• Demonstração do Windows 98 no COMDEX (vídeo/documentação histórica).
+• Documentos e artigos sobre o “Y2K problem” (relatórios governamentais e análises técnicas).
+• Cobertura e relatórios sobre a falha da British Airways de 2017 (imprensa britânica e documentos de regulação aérea).
+• Amazon – Post‑mortem público da interrupção do S3 (2017).
+• Comunicados e análises sobre o incidente CrowdStrike/Microsoft (2024), incluindo notas de fornecedores e órgãos setoriais.
+
+Observação: para um trabalho acadêmico, inclua as URLs e datas de acesso correspondentes às fontes acima.

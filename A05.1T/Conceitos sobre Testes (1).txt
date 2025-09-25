@@ -1,0 +1,12 @@
+Conceitos sobre Testes (1)
+
+1.Recapitule seus projetos anteriores e enumere os testes que realizou.
+
+Teste Realizado: Foi usado Cypress para validar se o texto da página foi carregado corretamente. O teste faz a validação de um link e de um texto no conteúdo da página.
+
+2.Tente descrever os testes que realizou nos termos (ou conceitos) apresentados anteriormente.
+Descreva de forma breve, mas clara e com exemplos práticos.
+
+Estado do Programa: O estado do programa no momento do teste é a página que o Cypress visitou, que deve estar carregada corretamente antes da execução do teste. O estado pode ser verificado no momento que o Cypress realiza o cy.get() e retorna o elemento da página.
+Erro: Um erro poderia ocorrer caso a página não fosse carregada corretamente ou o seletor cy.get('div[class="example"] h3') não encontrasse o elemento.
+Falha: A falha ocorreria se o texto dentro do <h3> não fosse igual ao esperado ('A/B Test Control'), o que impediria o teste de passar.

@@ -1,0 +1,127 @@
+GIT — ATIVIDADE: ESTADOS E DIFERENÇAS
+(Use o repositório hellogit das atividades anteriores)
+
+======================================================================
+0) PRÉ‑REQUISITOS
+======================================================================
+- Ter o repositório hellogit criado (com hello.java já versionado).
+- Estar em um estado “clean” (sem mudanças pendentes):
+  $ git status
+
+======================================================================
+1) Alterar hello.java para gerar 10 saídas “Hello Git!”
+======================================================================
+Edite hello.java e substitua o conteúdo por:
+
+----------------------------------
+class Hello {
+  public static void main(String[] args) {
+    for (int i = 1; i <= 10; i++) {
+      System.out.println("Hello Git!");
+    }
+  }
+}
+----------------------------------
+
+Opcional (compilar/rodar):
+  $ javac hello.java
+  $ java Hello
+
+======================================================================
+2) Observar STATUS e DIFERENÇAS e depois registrar a mudança
+======================================================================
+Antes de registrar:
+  $ git status
+  $ git diff                 # diferenças na área de trabalho (worktree)
+
+Adicionar ao stage e revisar:
+  $ git add hello.java
+  $ git status
+  $ git diff --staged        # diferenças que serão commitadas (stage)
+
+Commit:
+  $ git commit -m "feat: print 'Hello Git!' ten times in hello.java"
+  $ git log --oneline -n 1
+  $ git show --stat          # resumo de arquivos/linhas alteradas
+
+Dica: para desfazer staging sem perder alterações:
+  $ git restore --staged hello.java
+
+======================================================================
+3) Repetir o processo com novas modificações e comparar arquivos
+======================================================================
+Exemplo A — numerar as saídas:
+  Edite a linha do println para:
+    System.out.println("Hello Git! #" + i);
+  Verifique e registre:
+    $ git diff
+    $ git add hello.java
+    $ git diff --staged
+    $ git commit -m "feat: number outputs in hello.java"
+
+Exemplo B — trocar o laço (for -> while) ou alterar o limite (ex.: 5):
+  Faça a alteração
+  Verifique e registre como acima.
+
+Comparar versões (commits) entre si:
+  $ git log --oneline --decorate --graph -n 5
+  $ git diff HEAD~1 HEAD -- hello.java        # último vs. anterior
+  $ git diff <commit1> <commit2> -- hello.java
+
+======================================================================
+4) Criar hello.txt com orientações e adicionar ao repositório
+======================================================================
+Criar arquivo (exemplos):
+  macOS/Linux:
+    $ cat > hello.txt << 'EOF'
+    Dicas rápidas de Git:
+    - git status: vê o estado do repositório
+    - git diff / git diff --staged: compara mudanças
+    - git add / git commit: registra alterações
+    - git log / git show: histórico e detalhes
+    EOF
+  Windows (PowerShell):
+    > @'
+    Dicas rápidas de Git:
+    - git status: vê o estado do repositório
+    - git diff / git diff --staged: compara mudanças
+    - git add / git commit: registra alterações
+    - git log / git show: histórico e detalhes
+    '@ | Out-File -Encoding utf8 hello.txt
+
+Adicionar e registrar:
+  $ git add hello.txt
+  $ git commit -m "docs: add Git quick tips in hello.txt"
+
+======================================================================
+5) Renomear o arquivo para hello.md
+======================================================================
+  $ git mv hello.txt hello.md
+  $ git status
+  $ git diff --staged --name-status
+  $ git commit -m "chore: rename hello.txt to hello.md"
+
+======================================================================
+6) Remover o arquivo do repositório
+======================================================================
+Remover do repositório e do diretório de trabalho:
+  $ git rm hello.md
+  $ git commit -m "chore: remove hello.md"
+
+(Alternativa: manter o arquivo no disco, mas parar de rastrear)
+  $ git rm --cached hello.md
+  $ echo "hello.md" >> .gitignore   # opcional para não voltar ao status
+  $ git add .gitignore
+  $ git commit -m "chore: stop tracking hello.md and ignore it"
+
+======================================================================
+Checklist rápido
+======================================================================
+[ ] Modifiquei hello.java para 10 “Hello Git!”
+[ ] Conferi git status / git diff e commitei
+[ ] Fiz novas mudanças e comparei commits com git diff HEAD~1 HEAD
+[ ] Criei hello.txt com dicas, add/commit
+[ ] Renomeei para hello.md (git mv), commit
+[ ] Removi hello.md (git rm) ou parei de rastrear (--cached) + .gitignore
+
+FIM

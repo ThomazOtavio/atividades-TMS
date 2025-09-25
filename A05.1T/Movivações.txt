@@ -1,0 +1,14 @@
+Mariner 1 (1962)
+A falha ocorreu devido à omissão de um hífen em uma linha de código, resultando em sinais de orientação incorretos enviados à sonda espacial. Esse erro simples causou a perda da missão, destacando a importância de uma validação rigorosa de entradas e parâmetros. 
+https://raygun.com/blog/costly-software-errors-history
+
+Ariane 5 (1996)
+A falha no lançamento do foguete Ariane 5 foi atribuída a um erro de software que não validou adequadamente a conversão de dados, levando a uma exceção não tratada e à destruição da missão. 
+https://en.wikipedia.org/wiki/Ariane_flight_V88
+
+Pentium FDIV Bug (1994)
+Um erro na unidade de ponto flutuante do processador Pentium causava cálculos incorretos em divisões específicas. A falta de validação adequada nos cálculos levou a resultados errôneos, afetando a precisão dos processadores. 
+https://en.wikipedia.org/wiki/Pentium_FDIV_bug
+
+A DeviQA colaborou com equipes de tecnologia para automatizar testes, resultando em até 97% de cobertura de testes, lançamentos de produtos mais rápidos, maior eficiência da equipe e satisfação aprimorada do cliente.
+https://www.deviqa.com/case-studies

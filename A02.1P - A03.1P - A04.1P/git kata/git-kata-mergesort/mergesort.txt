@@ -1,0 +1,5 @@
+<<<<<<< HEAD
+Função Mergesort - versão master
+=======
+Função Mergesort - versão branch Mergesort-Impl
+>>>>>>> Mergesort-Impl
